@@ -18,7 +18,7 @@ $array_adtype=array(
 
 //列出所有
 if($job=="listad"&&ck_power('norm_listad')){
-	$query = $db->query("SELECT AD.* FROM {$pre}ad_norm_place AD ORDER BY AD.id DESC");
+	$query = $db->query("SELECT AD.*,C.name as city_name FROM {$pre}ad_norm_place AD left join {$pre}fenlei_city C on AD.city_id=C.fid ORDER BY AD.id DESC");
 	while($rs = $db->fetch_array($query)){
 		$rs[begintime]=$rs[begintime]?date("Y-m-d H:i:s",$rs[begintime]):'';
 		$rs[endtime]=$rs[endtime]?date("Y-m-d H:i:s",$rs[endtime]):'';

@@ -19,12 +19,14 @@ print <<<EOT
     <td width="6%">广告类型</td>
     <td width="8%">申请购买</td>
     <td width="6%">点击</td>
-    <td width="53%">调用代码</td>
+    <td width="6%">城市</td>
+    <td width="47%">调用代码</td>
     <td width="13%"> 修改 删除</td>
   </tr>
   <!--
 EOT;
 foreach($listdb AS $key=>$rs){
+$rs[city_name]=$rs[city_name]?$rs[city_name]:'全部';
 print <<<EOT
 -->
   <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
@@ -32,7 +34,8 @@ print <<<EOT
     <td width="6%" align="center">{$array_adtype[$rs[type]]}</td>
     <td width="8%" align="center">$rs[_ifsale]</td>
     <td width="6%" align="center">$rs[hits]</td>
-    <td width="53%" align="center"> 
+    <td width="6%" align="center">$rs[city_name]</td>
+    <td width="47%" align="center">
    
       <input type="text"  size="70" value="<script type='text/javascript' src='/$dirname/a_d_s.php?job=js&ad_id={$rs[keywords]}'></script>" >
       </td>
