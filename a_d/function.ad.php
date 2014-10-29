@@ -11,8 +11,14 @@ function make_ad_cache(){
 		}else{
 			list($_code,$code)=format_ad_code($rs,'',unserialize($rs[adcode]));
 			//必须使用'号,当作是字符串,不能使用"号,防止用户放$变量
-			$show.="\$AD_label['$rs[keywords]']=stripslashes('".addslashes($code)."');\r\n";
-			$show.="\$_AD_label['$rs[keywords]']=stripslashes('".addslashes($_code)."');\r\n";
+            if($rs['city_id']){
+                $show.="\$AD_label['$rs[city_id]']['$rs[keywords]']=stripslashes('".addslashes($code)."');\r\n";
+                $show.="\$_AD_label['$rs[city_id]']['$rs[keywords]']=stripslashes('".addslashes($_code)."');\r\n";
+            }else{
+                $show.="\$AD_label['$rs[keywords]']=stripslashes('".addslashes($code)."');\r\n";
+                $show.="\$_AD_label['$rs[keywords]']=stripslashes('".addslashes($_code)."');\r\n";
+            }
+
 		}
 
 		if($rs[ifsale]){

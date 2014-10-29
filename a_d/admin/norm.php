@@ -2,6 +2,10 @@
 !function_exists('html') && exit('ERR');
 
 require_once(Mpath."function.ad.php");
+$query = $db->query("SELECT * FROM {$pre}fenlei_city");
+while($rs = $db->fetch_array($query)){
+    $citydb[]=$rs;
+}
 
 $array_adtype=array(
 					"word"=>"文字广告",
@@ -66,6 +70,7 @@ elseif($job=="editadplace"&&ck_power('norm_listad'))
 //处理修改广告
 elseif($action=="editadplace"&&ck_power('norm_listad'))
 {
+
 	if($postdb[type]=='word'){
 		$cdb[linkurl]=$wordlinkurl;
 		$cdb[wordtarget]=$wordtarget;
@@ -93,6 +98,7 @@ elseif($action=="editadplace"&&ck_power('norm_listad'))
 
 
 	$cdb[code]=stripslashes($cdb[code]);
+	$cdb[city_id]=$city_id;
 	$postdb[adcode]=addslashes(serialize($cdb));
 
 	if($ifsale)
@@ -102,8 +108,7 @@ elseif($action=="editadplace"&&ck_power('norm_listad'))
 
 	$begintime&&$begintime=preg_replace("/([\d]+)-([\d]+)-([\d]+) ([\d]+):([\d]+):([\d]+)/eis","mk_time('\\4','\\5', '\\6', '\\2', '\\3', '\\1')",$begintime);
 	$endtime&&$endtime=preg_replace("/([\d]+)-([\d]+)-([\d]+) ([\d]+):([\d]+):([\d]+)/eis","mk_time('\\4','\\5', '\\6', '\\2', '\\3', '\\1')",$endtime);
-
-	$db->query("UPDATE `{$pre}ad_norm_place` SET name='$postdb[name]',demourl='$postdb[demourl]',keywords='$postdb[keywords]',adcode='$postdb[adcode]',type='$postdb[type]',isclose='$isclose',ifsale='$ifsale',moneycard='$moneycard',autoyz='$autoyz',begintime='$begintime',endtime='$endtime' WHERE id='$id' ");
+	$db->query("UPDATE `{$pre}ad_norm_place` SET name='$postdb[name]',demourl='$postdb[demourl]',keywords='$postdb[keywords]',adcode='$postdb[adcode]',type='$postdb[type]',isclose='$isclose',ifsale='$ifsale',moneycard='$moneycard',autoyz='$autoyz',begintime='$begintime',endtime='$endtime',city_id='$city_id' WHERE id='$id' ");
 	make_ad_cache();
 	jump("修改成功","$admin_path&job=listad",1);
 }
@@ -148,9 +153,9 @@ elseif($action=="addplace"&&ck_power('norm_listad'))
 	$begintime&&$begintime=preg_replace("/([\d]+)-([\d]+)-([\d]+) ([\d]+):([\d]+):([\d]+)/eis","mk_time('\\4','\\5', '\\6', '\\2', '\\3', '\\1')",$begintime);
 	$endtime&&$endtime=preg_replace("/([\d]+)-([\d]+)-([\d]+) ([\d]+):([\d]+):([\d]+)/eis","mk_time('\\4','\\5', '\\6', '\\2', '\\3', '\\1')",$endtime);
 
-	$db->query("INSERT INTO `{$pre}ad_norm_place` (`name` ,`demourl` , `keywords` , `adcode` , `type`, `ifsale`, `moneycard`, `autoyz`, `begintime`, `endtime` ) 
+	$db->query("INSERT INTO `{$pre}ad_norm_place` (`name` ,`demourl` , `keywords` , `adcode` , `type`, `ifsale`, `moneycard`, `autoyz`, `begintime`, `endtime`, `city_id` )
 				VALUES (
-		'$postdb[name]','$postdb[demourl]','$postdb[keywords]','$postdb[adcode]','$postdb[type]','$ifsale','$moneycard','$autoyz','$begintime','$endtime'
+		'$postdb[name]','$postdb[demourl]','$postdb[keywords]','$postdb[adcode]','$postdb[type]','$ifsale','$moneycard','$autoyz','$begintime','$endtime','$city_id'
 		)");
 	make_ad_cache();
 	jump("添加成功","$admin_path&job=listad",1);

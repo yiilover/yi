@@ -49,6 +49,30 @@ print <<<EOT
 EOT;
 }print <<<EOT
 -->
+
+
+
+    <tr bgcolor="#FFFFFF">
+        <td width="16%">所属城市:</td>
+        <td width="84%">
+            <select name="city_id">
+                <!--
+EOT;
+foreach($citydb AS $key=>$rs){
+$selected=$rsdb['city_id']==$rs['fid']?'selected':'';
+print <<<EOT
+-->
+                <option  value="$rs[fid]" $selected>$rs[name]</option>
+                <!--
+EOT;
+}
+print <<<EOT
+-->
+            </select>
+        </td>
+    </tr>
+
+
     <tr bgcolor="#FFFFFF"> 
       <td width="16%">是否开通给用户购买:</td>
       <td width="84%"> 
