@@ -1,0 +1,339 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/$STYLE/qita.css" />
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/$STYLE/list.css" />
+<script src="$webdb[www_url]/images/$STYLE/jquery.js" type="text/javascript"></script>
+<div id="bx-head-box">
+  <div class="bx-head-box">
+    <div class="head-box-l" style=" width:500px; overflow:hidden;">
+      <li><a href="$city_url"><img src="$webdb[www_url]/images/$STYLE/logo.png"  alt="{$city_DB[name][$city_id]}" title="{$city_DB[name][$city_id]}"  /></a></li>
+         <li class="waicong_com_cityname"><a href="$city_url" title="{$city_DB[name][$city_id]}" >{$city_DB[name][$city_id]}</a> </li>
+       <li>><a href="javascript:void();">发布信息</a></li></ul>
+    </div>
+ 
+  </div>
+</div>
+
+
+<div class="w980">
+
+<div class="pubimg"><img src="$webdb[www_url]/images/$STYLE/pub.jpg"  /></div>
+<div class="pubda">
+
+
+<div class="bx-one fl">
+
+<!--
+EOT;
+$array=array_flip($Fid_db[0]);
+$array=array_chunk($array,3);
+foreach($array AS $key_1=>$array1){
+print <<<EOT
+--> 
+
+ <!--
+EOT;
+foreach($array1 AS $key_2){
+print <<<EOT
+-->  
+               
+                   <div class="bx-one-a fl" >     
+                  <span class="bx-one-b-on$key_2"><a href="javascript:void(0);" class="ico$key_2">{$Fid_db[name][$key_2]}</a></span>
+				        
+                 <div class=" bx-one-b bx-one-b-$key_2 fl "> 
+                    <!--
+EOT;
+$i=0;
+foreach($Fid_db[$key_2] AS $key_3=>$rs){
+$i++;
+if($webdb[Info_showsortnum]>0&&$i>$webdb[Info_showsortnum]){break;}
+$InfoNum[$key_3]=intval($InfoNum[$key_3]);
+print <<<EOT
+--> 
+                    <a href="$city_url/post.php?city_id=$city_id&zone_id=$zone_id&street_id=$street_id&fid=$key_3">{$Fid_db[name][$key_3]}</a> 
+                    <!--
+EOT;
+}print <<<EOT
+-->
+                 
+                 </div></div>
+                
+              <!--
+EOT;
+}print <<<EOT
+--> 
+
+<!--
+EOT;
+}print <<<EOT
+--> 
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+   $('.bx-one-b-2').show();
+   $('.bx-one-b-on2').addClass("bgqs2");
+  $('.bx-one-b-on2').click(function(){
+  $('.bx-one-b-2').show();
+  $('.bx-one-b-180').hide();
+  $('.bx-one-b-181').hide();
+  $('.bx-one-b-182').hide();
+  $('.bx-one-b-183').hide();
+  $('.bx-one-b-184').hide();
+  $('.bx-one-b-185').hide();
+  $('.bx-one-b-187').hide();
+  $('.bx-one-b-187').hide();
+  $('.bx-one-b-188').hide();
+  $('.pubjt').show();
+  $('.bx-one-b-on2').addClass("bgqs2");
+  $('.bx-one-b-on180').removeClass("bgqs180");
+  $('.bx-one-b-on181').removeClass("bgqs181");
+  $('.bx-one-b-on182').removeClass("bgqs182");
+  $('.bx-one-b-on183').removeClass("bgqs183");
+  $('.bx-one-b-on184').removeClass("bgqs184");
+  $('.bx-one-b-on185').removeClass("bgqs185");
+  $('.bx-one-b-on186').removeClass("bgqs186");
+  $('.bx-one-b-on187').removeClass("bgqs187");
+  $('.bx-one-b-on188').removeClass("bgqs188");
+  });
+  
+ $('.bx-one-b-on180').click(function(){
+  $('.bx-one-b-180').show();
+  $('.bx-one-b-2').hide();
+  $('.bx-one-b-181').hide();
+  $('.bx-one-b-182').hide();
+  $('.bx-one-b-183').hide();
+  $('.bx-one-b-184').hide();
+  $('.bx-one-b-185').hide();
+  $('.bx-one-b-186').hide();
+  $('.bx-one-b-187').hide();
+  $('.bx-one-b-188').hide();
+  $('.pubjt').show();
+  $('.bx-one-b-on180').addClass("bgqs180");
+  $('.bx-one-b-on2').removeClass("bgqs2");
+  $('.bx-one-b-on181').removeClass("bgqs181");
+  $('.bx-one-b-on182').removeClass("bgqs182");
+  $('.bx-one-b-on183').removeClass("bgqs183");
+  $('.bx-one-b-on184').removeClass("bgqs184");
+  $('.bx-one-b-on185').removeClass("bgqs185");
+  $('.bx-one-b-on186').removeClass("bgqs186");
+  $('.bx-one-b-on187').removeClass("bgqs187");
+  $('.bx-one-b-on188').removeClass("bgqs188");
+  });
+  
+  
+  
+   $('.bx-one-b-on181').click(function(){
+  $('.bx-one-b-181').show();
+  $('.bx-one-b-2').hide();
+  $('.bx-one-b-180').hide();
+  $('.bx-one-b-182').hide();
+  $('.bx-one-b-183').hide();
+  $('.bx-one-b-184').hide();
+  $('.bx-one-b-185').hide();
+  $('.bx-one-b-186').hide();
+  $('.bx-one-b-187').hide();
+  $('.bx-one-b-188').hide();
+  $('.pubjt').show();
+  $('.bx-one-b-on181').addClass("bgqs181");
+  $('.bx-one-b-on180').removeClass("bgqs180");
+  $('.bx-one-b-on2').removeClass("bgqs2");
+  $('.bx-one-b-on182').removeClass("bgqs182");
+  $('.bx-one-b-on183').removeClass("bgqs183");
+  $('.bx-one-b-on184').removeClass("bgqs184");
+  $('.bx-one-b-on185').removeClass("bgqs185");
+  $('.bx-one-b-on186').removeClass("bgqs186");
+  $('.bx-one-b-on187').removeClass("bgqs187");
+  $('.bx-one-b-on188').removeClass("bgqs188");
+  });
+ 
+  
+   $('.bx-one-b-on182').click(function(){
+  $('.bx-one-b-182').show();
+  $('.bx-one-b-2').hide();
+  $('.bx-one-b-181').hide();
+  $('.bx-one-b-180').hide();
+  $('.bx-one-b-183').hide();
+  $('.bx-one-b-184').hide();
+  $('.bx-one-b-185').hide();
+  $('.bx-one-b-186').hide();
+  $('.bx-one-b-187').hide();
+  $('.bx-one-b-188').hide();
+  $('.pubjt').show();
+  $('.bx-one-b-on182').addClass("bgqs182");
+  $('.bx-one-b-on180').removeClass("bgqs180");
+  $('.bx-one-b-on2').removeClass("bgqs2");
+  $('.bx-one-b-on183').removeClass("bgqs183");
+  $('.bx-one-b-on181').removeClass("bgqs181");
+  $('.bx-one-b-on184').removeClass("bgqs184");
+  $('.bx-one-b-on185').removeClass("bgqs185");
+  $('.bx-one-b-on186').removeClass("bgqs186");
+  $('.bx-one-b-on187').removeClass("bgqs187");
+  $('.bx-one-b-on188').removeClass("bgqs188");
+  });
+  
+  
+  
+   $('.bx-one-b-on183').click(function(){
+  $('.bx-one-b-183').show();
+  $('.bx-one-b-2').hide();
+  $('.bx-one-b-181').hide();
+  $('.bx-one-b-182').hide();
+  $('.bx-one-b-180').hide();
+  $('.bx-one-b-184').hide();
+  $('.bx-one-b-185').hide();
+  $('.bx-one-b-186').hide();
+  $('.bx-one-b-187').hide();
+  $('.bx-one-b-188').hide();
+  $('.pubjt').show();
+  $('.bx-one-b-on183').addClass("bgqs183");
+  $('.bx-one-b-on180').removeClass("bgqs180");
+  $('.bx-one-b-on2').removeClass("bgqs2");
+  $('.bx-one-b-on182').removeClass("bgqs182");
+  $('.bx-one-b-on184').removeClass("bgqs184");
+  $('.bx-one-b-on181').removeClass("bgqs181");
+  $('.bx-one-b-on185').removeClass("bgqs185");
+  $('.bx-one-b-on186').removeClass("bgqs186");
+  $('.bx-one-b-on187').removeClass("bgqs187");
+  $('.bx-one-b-on188').removeClass("bgqs188");
+  });
+  
+   $('.bx-one-b-on184').click(function(){
+  $('.bx-one-b-184').show();
+  $('.bx-one-b-2').hide();
+  $('.bx-one-b-181').hide();
+  $('.bx-one-b-182').hide();
+  $('.bx-one-b-183').hide();
+  $('.bx-one-b-180').hide();
+  $('.bx-one-b-185').hide();
+  $('.bx-one-b-186').hide();
+  $('.bx-one-b-187').hide();
+  $('.bx-one-b-188').hide();
+  $('.pubjt').show();
+  $('.bx-one-b-on184').addClass("bgqs184");
+  $('.bx-one-b-on180').removeClass("bgqs180");
+  $('.bx-one-b-on2').removeClass("bgqs2");
+  $('.bx-one-b-on182').removeClass("bgqs182");
+  $('.bx-one-b-on183').removeClass("bgqs183");
+  $('.bx-one-b-on185').removeClass("bgqs185");
+  $('.bx-one-b-on181').removeClass("bgqs181");
+  $('.bx-one-b-on186').removeClass("bgqs186");
+  $('.bx-one-b-on187').removeClass("bgqs187");
+  $('.bx-one-b-on188').removeClass("bgqs188");
+  });
+  
+  
+   $('.bx-one-b-on185').click(function(){
+  $('.bx-one-b-185').show();
+  $('.bx-one-b-2').hide();
+  $('.bx-one-b-181').hide();
+  $('.bx-one-b-182').hide();
+  $('.bx-one-b-183').hide();
+  $('.bx-one-b-184').hide();
+  $('.bx-one-b-180').hide();
+  $('.bx-one-b-186').hide();
+  $('.bx-one-b-187').hide();
+  $('.bx-one-b-188').hide();
+  $('.pubjt').show();
+  $('.bx-one-b-on185').addClass("bgqs185");
+  $('.bx-one-b-on180').removeClass("bgqs180");
+  $('.bx-one-b-on2').removeClass("bgqs2");
+  $('.bx-one-b-on182').removeClass("bgqs182");
+  $('.bx-one-b-on183').removeClass("bgqs183");
+  $('.bx-one-b-on184').removeClass("bgqs184");
+  $('.bx-one-b-on186').removeClass("bgqs186");
+  $('.bx-one-b-on181').removeClass("bgqs181");
+  $('.bx-one-b-on187').removeClass("bgqs187");
+  $('.bx-one-b-on188').removeClass("bgqs188");
+  });
+  
+   $('.bx-one-b-on186').click(function(){
+  $('.bx-one-b-186').show();
+  $('.bx-one-b-2').hide();
+  $('.bx-one-b-181').hide();
+  $('.bx-one-b-182').hide();
+  $('.bx-one-b-183').hide();
+  $('.bx-one-b-184').hide();
+  $('.bx-one-b-185').hide();
+  $('.bx-one-b-180').hide();
+  $('.bx-one-b-187').hide();
+  $('.bx-one-b-188').hide();
+  $('.pubjt').show();
+  $('.bx-one-b-on186').addClass("bgqs186");
+  $('.bx-one-b-on180').removeClass("bgqs180");
+  $('.bx-one-b-on2').removeClass("bgqs2");
+  $('.bx-one-b-on182').removeClass("bgqs182");
+  $('.bx-one-b-on183').removeClass("bgqs183");
+  $('.bx-one-b-on184').removeClass("bgqs184");
+  $('.bx-one-b-on185').removeClass("bgqs185");
+  $('.bx-one-b-on187').removeClass("bgqs187");
+  $('.bx-one-b-on181').removeClass("bgqs181");
+  $('.bx-one-b-on188').removeClass("bgqs188");
+  });
+  
+  
+   $('.bx-one-b-on187').click(function(){
+  $('.bx-one-b-187').show();
+  $('.bx-one-b-2').hide();
+  $('.bx-one-b-181').hide();
+  $('.bx-one-b-182').hide();
+  $('.bx-one-b-183').hide();
+  $('.bx-one-b-184').hide();
+  $('.bx-one-b-180').hide();
+  $('.bx-one-b-186').hide();
+  $('.bx-one-b-185').hide();
+  $('.bx-one-b-188').hide();
+  $('.pubjt').show();
+  $('.bx-one-b-on187').addClass("bgqs187");
+  $('.bx-one-b-on180').removeClass("bgqs180");
+  $('.bx-one-b-on2').removeClass("bgqs2");
+  $('.bx-one-b-on182').removeClass("bgqs182");
+  $('.bx-one-b-on183').removeClass("bgqs183");
+  $('.bx-one-b-on184').removeClass("bgqs184");
+  $('.bx-one-b-on185').removeClass("bgqs185");
+  $('.bx-one-b-on186').removeClass("bgqs186");
+  $('.bx-one-b-on181').removeClass("bgqs181");
+  $('.bx-one-b-on188').removeClass("bgqs188");
+  });
+  
+  
+  
+   $('.bx-one-b-on188').click(function(){
+  $('.bx-one-b-188').show();
+  $('.bx-one-b-2').hide();
+  $('.bx-one-b-181').hide();
+  $('.bx-one-b-182').hide();
+  $('.bx-one-b-183').hide();
+  $('.bx-one-b-184').hide();
+  $('.bx-one-b-180').hide();
+  $('.bx-one-b-186').hide();
+  $('.bx-one-b-185').hide();
+  $('.bx-one-b-187').hide();
+  $('.pubjt').show();
+  $('.bx-one-b-on188').addClass("bgqs188");
+  $('.bx-one-b-on180').removeClass("bgqs180");
+  $('.bx-one-b-on2').removeClass("bgqs2");
+  $('.bx-one-b-on182').removeClass("bgqs182");
+  $('.bx-one-b-on183').removeClass("bgqs183");
+  $('.bx-one-b-on184').removeClass("bgqs184");
+  $('.bx-one-b-on185').removeClass("bgqs185");
+  $('.bx-one-b-on186').removeClass("bgqs186");
+  $('.bx-one-b-on187').removeClass("bgqs187");
+  $('.bx-one-b-on181').removeClass("bgqs181");
+  });
+});
+
+</script>
+<!--
+EOT;
+?>
+-->

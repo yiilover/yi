@@ -1,0 +1,67 @@
+<!--
+<?php
+print <<<EOT
+-->
+<style>
+.w { width:960px; margin:40px auto; line-height:25px;}
+.text2 { border:1px solid #ccc; padding:1px 0px;  font-size:16px; font-family: Arial, Helvetica, sans-serif; margin-top:10px;}
+.submit2 {color:#FFF;
+	/*background:url(bt_bg.gif);*/background:#6FB301; 
+	height:25px; padding:0px 15px; line-height:25px; font-weight:bold;
+	border:none;
+	letter-spacing:2px;}
+	.TAG { padding:15px 0px; font-size:16px; font-weight:bold;}	
+</style>
+<div class="w">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+<tr  height="100">
+  
+ </tr>
+  <tr> 
+    <td valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" style="display:$hide_listpic">
+        <form name="form1" method="post" action="?action=send">
+          <tr> 
+            <td class="head"> 
+              <h3 class="L"></h3>
+              <span class="TAG">激活帐号</span> 
+              <h3 class="R"></h3>
+            </td>
+          </tr>
+          <tr> 
+            <td class="middle" align="left"> 
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr> 
+                  <td align="left" height="62">你要激活的帐号是： 
+                    <input type="text" name="atc_username" value="$username" class="text2" >
+                    <br>
+                    接收邮件的邮箱是：
+                    <input type="text" name="atc_email" class="text2" value="$email">
+                    <br>
+                    <br>
+                    <input type="submit" name="Submit" value="提交"  class="submit2">
+                  </td>
+                </tr>
+                <tr>
+                  <td align="left"  style="height:50px; line-height:50px;">提示:系统会自动发送一封邮件到你的邮箱,你需要点击邮件里边的内容,才能激活你的帐号!</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr> 
+            <td class="foot"> 
+              <h3 class="L"></h3>
+              <h3 class="R"></h3>
+            </td>
+          </tr>
+        </form>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+</div>
+<!--
+EOT;
+?>
+-->

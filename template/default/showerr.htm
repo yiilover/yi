@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+<?php
+print <<<EOT
+-->
+<head>
+<style type="text/css">
+body {margin:0;font-size:12px;color:#555;background:#FFFFFF; font-family:宋体,Verdana,Arial;}
+input,select,textarea,td {font-size:12px;}
+img {border:none;}
+h1,h2,h3,h4,h5,h6 { font-size:14px; font-weight:500; display:inline;}
+ul li {list-style-type:none;}
+ol li {list-style-type:decimal;}
+ul,form {margin:0px;padding:0px;}
+a:link,a:active {color:#2244dd;text-decoration:none;}
+a:visited { color:#880088;text-decoration:none;}
+a:hover {color:#FF0000;text-decoration:underline;}
+.w800 { width:800px; margin:0px auto;font-size:14px; }
+.w800 p { line-height:30px;}
+.logo { border-bottom:2px #8cc13c solid; padding-bottom:10px; margin-top:25px;}
+.ts { line-height:30px; border:1px solid #ffcc7f;height:100%; overflow:hidden;  background:#ffffe5; padding:10px; margin-top:30px; }
+.post_bt { border:none; height:25px; font-size:14px; font-weight:bold; background:#ffffe5;  cursor:hand; color:#555;}
+.keyi li{list-style: inside square; text-indent:25px; line-height:30px;}
+.keyi { margin-top:15px; text-indent:10px;}
+#foot { font-size:12px; text-align:center; line-height:25px; margin-top:25px;}
+</style>
+<title>您的访问出错了 - $webdb[webname]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+</head>
+
+<body>
+ <SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/inc.js"></SCRIPT>
+ <script type="text/javascript">         
+function countDown(secs,surl){         
+ //alert(surl);         
+ var jumpTo = document.getElementById('jumpTo');    
+ jumpTo.innerHTML=secs;      
+ if(--secs>0){         
+     setTimeout("countDown("+secs+",'"+surl+"')",1000);         
+     }         
+ else{           
+     location.href=surl;         
+     }         
+ }         
+</script>
+ <div class="w800">
+ <div class="logo">
+   <a href="$webdb[www_url]/"><img src="$webdb[www_url]/images/$STYLE/logo.png" border="0" onload="if(self!=top)this.style.display='none';"></a>
+ </div>
+ <div class="ts">
+<p><strong> 信息提示</strong>：$showerrMsg! <br/>倒数<span id="jumpTo" style="font-weight:bold; color:#F00;"> 9 </span>秒后自动跳转到   
+<script type="text/javascript">countDown(9,'/');</script> 上一级的页面，快速跳转，请
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if(document.referrer==''&&window.self==window.top){
+	document.write('<input type="button" name="Submit" value="点击关闭本网页" class="post_bt" onclick="window.self.close();"> <input type="button" name="Submit" value="返回网站首页" class="post_bt" onclick="top.location.href=\'$webdb[www_url]/\';"> ');
+}else{
+var num=0;
+document.write('<input type="button" name="Submit" value="点击返回" class="post_bt" onclick="history.back(-1);if(num>0)top.location.href=\'$FROMURL\';num++;">');
+}
+//-->
+</SCRIPT></p>
+
+ </div>
+ <div class="keyi">
+<strong>您可以：</strong><Br/>
+
+<ul><li><a href="/?&f=top&cityurl=$webdb[www_url]?=.html"  >返回网站首页</a></li> 
+	  <li><a href="/do/login.php?&f=top&cityurl=$webdb[www_url]?=.html" >登录</a></li> <li><a href="/do/reg.php?&f=top&cityurl=$webdb[www_url]?=.html">注册</a></li>
+      </ul>
+
+ </div>
+
+
+ 
+
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+</body>
+</html>
+<!--
+EOT;
+?>
+-->

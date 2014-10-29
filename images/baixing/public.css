@@ -1,0 +1,57 @@
+@charset "gb2312";
+/* public */
+/*Style By BXMPS.com */
+/*QQ：550178505*/
+/*E-mail:bxmps@qq.com*/
+/*盗版必究 支持正版*/
+body {margin:0;font-size:12px;color:#555;font-family:微软雅黑,宋体,Verdana,Arial;}
+input,select,textarea,td {font-size:12px;}
+img {border:none;}
+h1,h2,h3,h4,h5,h6 {font-weight:500; display:inline;}
+ul li {list-style-type:none;}
+ol li {list-style-type:decimal;}
+ul,form {margin:0px;padding:0px;}
+a {color:#333;text-decoration:none;}
+a:hover {color:#FF0000;text-decoration:underline;}
+.f16 {font-size: 16px;}
+.fl { float:left;}
+.fr { float:right;}
+.mt10 { margin-top:10px;}
+.cle { clear:both;}
+/* global */
+.w980 { width:980px; margin:0px auto;}
+.w996 { width:988px; margin:0px auto; padding-left:8px; overflow:hidden; height:100%;}
+
+#bx-head {background:#F2F1EC; font-family:"宋体";width:100%;border-bottom: 1px solid #dddddd;height:28px;line-height: 28px; }
+.bx-head {background:#F2F1EC;font-size:12px;color:#666;width:980px; margin:0px auto;} 
+.bx-head a { color:#666; margin:0px 5px;}
+.bx-head a:hover { color:#F00;}
+.bx-head span { color:#ccc;}
+.bxhead-r { float:left; text-align:right; width:380px;}
+.bxhead-r-l { float:right; }
+.bxhead-r-r { float:right; background:url(xg.png) 5px 6px no-repeat; padding-left:15px;}
+.bxhead-r-l i .ico-xg { margin-right: 3px; width:16px; height:16px;}
+
+.bxhead-l { float:left; width:600px;}
+.bxhead-l a { margin:0px;}
+/*2014年4月23日 14:12 */
+.bxhead-l li { float:left;}
+.bxhead-l li.waicong_com_tel { background:url(tel.gif) 0px 5px  no-repeat; text-indent:17px; width:73px;}
+
+.d-bottom  { height:100%; overflow:hidden; padding:10px 0px;  line-height:25px;}
+.d-bottom-l { width:80px; overflow:hidden; color:#666; font-weight:bold; }
+.d-bottom-r { width:900px; height:100%; overflow:hidden;}
+.d-bottom-r a { color:#888; margin-right:5px; font-family:"宋体"; white-space:nowrap;}
+.d-bottom-r a:hover {color: #FF5500;}
+
+.d-box { height:100%; overflow:hidden;}
+
+.bx-link { line-height:25px;border-bottom:1px solid #F2F1EC; margin-bottom:10px; padding-bottom:10px; overflow:hidden; clear:both;}
+.bx-link a { font-size:12px; color:#666;}
+
+#bx-foot {/* background:#F2F1EC;*/}
+.bx-foot ,.bx-foot a { font-size:12px; color:#888;}
+.bx-foot { padding:14px 0px 10px 0px;color:#888;overflow:hidden; text-align:center;font-family:"宋体"; border-top:1px solid #F2F1EC; width:980px; margin:0px auto;}
+.bbbb { padding-top:5px; margin-top:4px; line-height:20px;}
+.bx-foot span { font-family: "Arial Black", Gadget, sans-serif;}
+.bx-foot p { line-height:20px; margin:0px; padding:0px;}

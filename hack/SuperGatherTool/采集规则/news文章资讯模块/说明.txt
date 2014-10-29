@@ -1,0 +1,4 @@
+1、采集文章不能分页是齐博系统本身bug，解决办法：
+http://bbs.lanelead.com/viewthread.php?tid=15&extra=page%3D1
+
+2、文章模块规则适合地方门户或b2b news资讯模块，也适合v7整站的文章采集，使用时请根据你自己的齐博系统在 标题规则 中选择适合的模块。 news资讯模块 - 为齐博门户系统、B2B系统所有，article文章 - V7整站系统所有

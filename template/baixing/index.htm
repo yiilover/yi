@@ -1,0 +1,295 @@
+<?php
+print <<<EOT
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/$STYLE/index.css" />
+<script src="$webdb[www_url]/images/$STYLE/jquery.js" type="text/javascript"></script>
+<script type="text/javascript" src="$webdb[www_url]/images/$STYLE/jquery.jcarousel.min.js"></script>
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/$STYLE/skin.css" />
+<div id="bx-head-box">
+  <div class="bx-head-box">
+    <div class="head-box-l">
+      <ul>
+      <li>
+      <a href="$city_url"><img src="$webdb[www_url]/images/$STYLE/logo.png"  alt="{$city_DB[name][$city_id]}" title="{$city_DB[name][$city_id]}"  /></a></li>
+      <li class="waicong_com_cityname"><a href="$city_url" title="{$city_DB[name][$city_id]}" >{$city_DB[name][$city_id]}</a> </li>
+      </ul> 
+    </div>
+    <div class="head-box-m">
+     <form name="form_headsearch" method="GET" action="$city_url/search.php" target="_blank" onsubmit="return cksearch();">
+        <input type="text" name="keyword" class="so-text" value="请输入关键字或分类名"  onFocus="if (this.value == '请输入关键字或分类名') {this.value = '';}" onBlur="if (this.value == '') {this.value = '请输入关键字或分类名';}"  >
+        <input type="submit" value=" " class="so-btn"/>
+        <input type="hidden" name="action" value="search">
+      </form>
+    </div>
+    <div class="head-box-r"><a href="$city_url/post.php?&f=top&cityurl=$webdb[www_url]?=.html" title="免费发布信息" target="_blank" >免费发布信息</a></div>
+  </div>
+</div>
+
+<div class="waicong_com_indextop">
+  <div class="ad6s">
+    <ul>
+     
+      <!--
+EOT;
+if(count($friendlinkDB[1])&&count($friendlink_DB[$city_id][1])) $array = $friendlinkDB[1]+$friendlink_DB[$city_id][1];
+elseif(count($friendlinkDB[1])) $array = $friendlinkDB[1];
+else $array = $friendlink_DB[$city_id][1];
+foreach($array AS $rs){
+print <<<EOT
+-->
+              <li><a href="$rs[url]" title="名称:$rs[name]\r\n描述:$rs[descrip]" target="_blank"><img alt="名称:$rs[name]\r\n描述:$rs[descrip]" src="$rs[logo]" width="320" height="110" border=0></a></li>
+              <!--
+EOT;
+}
+print <<<EOT
+-->
+    </ul>
+  </div>
+</div>
+
+
+
+<div class="w996">
+  <div class="wf-main" id="wf-main"> 
+    <!--
+EOT;
+$i=0;
+foreach($Fid_db[0] AS $key_2=>$rs){
+$i++;
+$Num=0;
+$InfoNum[$key_2]=intval($InfoNum[$key_2]);
+$url=get_info_url('',$key_2,$city_id);
+print <<<EOT
+-->
+    
+    <div class="wf-cld" >
+      <ul>
+        <div class="bigcol bigico-$key_2"><a href="$url"  title="{$city_DB[name][$city_id]}{$Fid_db[name][$key_2]}">{$Fid_db[name][$key_2]}</a> <span>(</span><small  id="fnumk{$i}"></small><span>)</span></div>
+        
+        <!--
+EOT;
+foreach($Fid_db[$key_2] AS $key_3=>$rs){
+$InfoNum[$key_3]=intval($InfoNum[$key_3]);
+$url=get_info_url('',$key_3,$city_id);
+$Fid_db[name][$key_3] = get_word($Fid_db[name][$key_3],25);
+print <<<EOT
+--> <li class="li-$key_3"><a href="$url" title="{$city_DB[name][$city_id]}{$Fid_db[name][$key_3]}" >{$Fid_db[name][$key_3]}</a></li>
+        <!--
+EOT;
+for($j=0;$j<count($key_3);$j++)$Num+=$InfoNum[$key_3];
+}print <<<EOT
+-->
+      </ul>
+    </div>
+    <script type="text/javascript">
+document.getElementById("fnumk{$i}").innerHTML="{$Num}";
+</script> 
+    <!--
+EOT;
+}print <<<EOT
+--> 
+    
+  </div>
+</div>
+ <div class="w980">
+  <div class="d-bottom">
+  
+  <!--
+EOT;
+if(count($city_DB[name])>1){
+print <<<EOT
+--> 
+
+
+ <div class="d-box">
+      <div class="d-bottom-l fl">周边城市</div>
+      <div class="d-bottom-r fr"> 
+        
+        <!--
+EOT;
+$i=0;
+foreach($sortdb AS $key=>$rs){
+if(++$i>10)break;
+if($rs[domain]==""){
+   $url="/".$rs[dirname]."/";
+}else{
+   $url=$rs[domain];
+}
+print <<<EOT
+-->   <a href="$url" title="{$rs[name]}" >{$rs[name]}</a>
+<!--
+EOT;
+}
+print <<<EOT
+--></div>
+    </div>
+
+
+
+    <div class="d-box">
+      <div class="d-bottom-l fl">热门城市</div>
+      <div class="d-bottom-r fr"> 
+        
+        <!--
+EOT;
+$i=0;
+foreach($city_DB[name] AS $key2=>$value2 ){
+if(!$key2||++$i>20)break;
+print <<<EOT
+--> <a href="{$city_DB[url][$key2]}" title="$value2">$value2</a> 
+        <!--
+EOT;
+}
+print <<<EOT
+--> 
+        <a href="$webdb[www_url]/allcity.php"  title="全部城市" >所有城市</a> </div>
+    </div>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <div class="d-box">
+      <div class="d-bottom-l fl">友情链接</div>
+      <div class="d-bottom-r fr"> <!--
+EOT;
+if(count($friendlinkDB[1])&&count($friendlink_DB[$city_id][1])) $array = $friendlinkDB[1]+$friendlink_DB[$city_id][1];
+elseif(count($friendlinkDB[1])) $array = $friendlinkDB[1];
+else $array = $friendlink_DB[$city_id][1];
+foreach($array AS $rs){
+print <<<EOT
+-->
+              <a href="$rs[url]" target="_blank" title="$rs[descrip]">$rs[name]</a> 
+              <!--
+EOT;
+}
+print <<<EOT
+-->
+            
+
+<!--
+EOT;
+if(count($friendlink_DB[$city_id][0])){print <<<EOT
+--> 
+      
+              <!--
+EOT;
+if(count($friendlink_DB[$city_id][0])) $array = $friendlink_DB[$city_id][0];
+foreach($array AS $rs){print <<<EOT
+-->
+              <a href="$rs[url]" target="_blank" title="$rs[descrip]">$rs[name]</a>&nbsp; 
+              <!--
+EOT;
+}
+print <<<EOT
+-->
+
+<!--
+EOT;
+}
+print <<<EOT
+--> </div>
+    </div>
+    
+    
+    <div class="d-box">
+      <div class="d-bottom-l fl">关于我们</div>
+      <div class="d-bottom-r fr">
+       <!--
+EOT;
+$query=$db->query("SELECT * FROM {$pre}alonepage ORDER BY id DESC ");
+while($rs=$db->fetch_array($query)){
+print <<<EOT
+-->
+<a href='$webdb[www_url]/$rs[filename]'>$rs[name]</a>
+<!--
+EOT;
+}print <<<EOT
+-->
+       
+ 
+</div>
+ </div>
+</div></div>
+<script type="text/javascript">
+
+// JavaScript Document
+function Waterfall(param){
+    this.id = typeof param.container == 'string' ? document.getElementById(param.container) : param.container;
+    this.colWidth = param.colWidth;
+    this.colCount = param.colCount || 4;
+    this.cls = param.cls && param.cls != '' ? param.cls : 'wf-cld';
+    this.init();
+}
+Waterfall.prototype = {
+    getByClass:function(cls,p){
+        var arr = [],reg = new RegExp("(^|\\s+)" + cls + "(\\s+|$)","g");
+        var nodes = p.getElementsByTagName("*"),len = nodes.length;
+        for(var i = 0; i < len; i++){
+            if(reg.test(nodes[i].className)){
+                arr.push(nodes[i]);
+                reg.lastIndex = 0;
+            }
+        }
+        return arr;
+    },
+    maxArr:function(arr){
+        var len = arr.length,temp = arr[0];
+        for(var ii= 1; ii < len; ii++){
+            if(temp < arr[ii]){
+                temp = arr[ii];
+            }
+        }
+        return temp;
+    },
+    getMar:function(node){
+        var dis = 0;
+        if(node.currentStyle){
+            dis = parseInt(node.currentStyle.marginBottom);
+        }else if(document.defaultView){
+            dis = parseInt(document.defaultView.getComputedStyle(node,null).marginBottom);
+        }
+        return dis;
+    },
+	getMinCol:function(arr){
+		var ca = arr,cl = ca.length,temp = ca[0],minc = 0;
+		for(var ci = 0; ci < cl; ci++){
+			if(temp > ca[ci]){
+				temp = ca[ci];
+				minc = ci;
+			}
+		}
+		return minc;
+	},
+    init:function(){
+        var _this = this;
+        var col = [],//列高
+		    iArr = [];//索引
+        var nodes = _this.getByClass(_this.cls,_this.id),len = nodes.length;
+        for(var i = 0; i < _this.colCount; i++){
+            col[i] = 0;
+        }
+        for(var i = 0; i < len; i++){
+            nodes[i].h = nodes[i].offsetHeight + _this.getMar(nodes[i]);
+            iArr[i] = i;
+        }
+		
+		for(var i = 0; i < len; i++){
+			var ming = _this.getMinCol(col);
+			nodes[i].style.left = ming * _this.colWidth + "px";
+			nodes[i].style.top = col[ming] + "px";
+			col[ming] += nodes[i].h;
+		}
+		
+		_this.id.style.height = _this.maxArr(col) + "px";
+    }
+};
+new Waterfall({
+    "container":"wf-main",
+    "colWidth":200,
+    "colCount":5
+});
+</script> 
+<script type='text/javascript' src='/a_d/a_d_s.php?job=js&ad_id=AD_5487'></script>
+<!--
+EOT;
+?>
+-->

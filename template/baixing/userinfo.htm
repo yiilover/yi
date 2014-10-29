@@ -1,0 +1,35 @@
+<!--
+<?php
+$listdb || $style_list="none;";
+print <<<EOT
+--> 
+<style type="text/css">
+.showpage {line-height:25px; text-align:center; margin-top:10px; font-family:Verdana, Geneva, sans-serif;}
+.showpage a { border:1px solid #ddd; padding:2px 6px;font-size:14px; margin:0px 2px;}
+.showpage .show { background:#8cc13c; color:#FFF; font-weight:bold; }
+.dexdfe li { line-height:30px; font-size:14px;}
+.all-t { height:30px; line-height:30px;border-bottom:1px solid #8cc13c;overflow:hidden; margin-bottom:15px;}
+</style>
+<div class="w980">
+<div class="all-t">用户 <strong>$rsdb[username]</strong> 发布的信息</div>
+<ul class="dexdfe">
+ <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$rs[url]=get_info_url($rs[id],$rs[fid],$rs[city_id]);
+print <<<EOT
+-->
+            <li><a href="$rs[url]" title="$rs[title]" target="_blank">$rs[title]</a>  
+            ({$rs[posttime]})[<a href="$city_url/job.php?job=update&fid=$rs[fid]&id=$rs[id]">刷新</a>]</li>
+            <!--
+EOT;
+}
+print <<<EOT
+-->
+</ul>
+<div class="showpage">$showpage</div>
+</div>
+<!--
+EOT;
+?>
+-->

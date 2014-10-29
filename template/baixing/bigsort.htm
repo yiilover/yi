@@ -1,0 +1,263 @@
+<!--
+<?php
+@include(dirname(__FILE__)."/bigsort.php");
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/$STYLE/list.css" />
+<script src="$webdb[www_url]/images/$STYLE/jquery.js" type="text/javascript"></script>
+<div id="bx-head-box">
+  <div class="bx-head-box">
+    <div class="head-box-l">
+      <ul>
+      <li><a href="$city_url"><img src="$webdb[www_url]/images/$STYLE/logo.png"  alt="{$city_DB[name][$city_id]}" title="{$city_DB[name][$city_id]}"  /></a></li>
+       <li class="waicong_com_cityname"><a href="$city_url" title="{$city_DB[name][$city_id]}" >{$city_DB[name][$city_id]}</a> </li>
+       <li>{$GuideFid[$fid]}</li><li></li></ul>
+    </div>
+    <div class="head-box-m">
+     
+    </div>
+    <div class="head-box-r">
+      <div class="head-box-r-r">  </div> 
+    <div class="head-box-r-m"><a href="$city_url/post.php" title="免费发布{$fidDB[name]}信息" target="_blank" >免费发布{$fidDB[name]}信息</a></div>
+    <div class="head-box-r-l"> </div>
+    
+    </div>
+  </div>
+</div>
+<div class="w980"> 
+	<div class="waicong_bigsort">
+     <ul>
+      <li class="waicong_bingsort_a">类目：</li>
+      <li class="waicong_bingsort_b"><!--
+EOT;
+foreach($sortDB AS $key=>$rs){
+print <<<EOT
+-->
+            <a href="$rs[url]">$rs[name]</a>
+              
+            <!--
+EOT;
+}print <<<EOT
+--></li>
+  </ul>
+	</div>
+<div  class="bx-list">
+  <div class="bx-list-l fr">
+     <div class="list-so">
+       <div class="list-so-so">
+       <form name="form_headsearch" method="GET" action="$city_url/search.php" target="_blank" onsubmit="return cksearch();">
+           <input type="text" name="keyword" class="nso-text" value="搜索{$fidDB[name]}"  onFocus="if (this.value == '搜索{$fidDB[name]}') {this.value = '';}" onBlur="if (this.value == '') {this.value = '搜索{$fidDB[name]}';}"   >
+           <input type="submit" value=" " class="nso-btn"/>
+           <input type="hidden" name="action" value="search">
+           </form>
+       
+       </div>
+     </div>
+  
+ 
+   <div class="list-so-t cle mt10"><span>同级栏目</span></div>
+  <div class="list-leimu">
+  
+      <!--
+EOT;
+foreach($Fid_db[$fidDB[fup]] AS $key=>$value){
+$url=get_info_url('',$key,$city_id);
+print <<<EOT
+-->
+          <a href="$url" target="_blank" title="{$city_DB[name][$city_id]}{$Fid_db[name][$key]}">{$city_DB[name][$city_id]}{$Fid_db[name][$key]}</a>  
+          
+          <!--
+EOT;
+}
+print <<<EOT
+-->
+
+  </div>
+    <div class="list-so-t cle mt10"><span>广告</span></div>
+   <div class="list-leimu" style="height:600px;">
+  
+     <script type='text/javascript' src='/a_d/a_d_s.php?job=js&ad_id=AD_8800'></script>
+
+  </div>  
+  
+  
+  </div>
+  <div class="bx-list-r fl">
+
+     <div class="r-post"><a href="$city_url/post.php"> 立即免费发布{$fidDB[name]}信息</a></div>
+     <div class="list-li mt10">
+     <ul>
+     <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$rs[url]=get_info_url($rs[id],$rs[fid],$rs[city_id]);
+@extract($db->get_one("SELECT content FROM `{$_pre}content_$rs[mid]` where id='$rs[id]'"));
+$rs[content]=$content;
+$fidurl=get_info_url('',$rs[fid],$rs[city_id]);
+$rs[content]=get_word($rs[content],50);
+print <<<EOT
+-->
+				<li class="libg">
+                <div class="li-l fl">
+             
+                             <!--
+EOT;
+if($rs[picurl]){
+print <<<EOT
+-->
+    
+                <a href="$rs[url]" title="$rs[title]" target="_blank"><img src="$rs[picurl]" onerror="this.src='/images/$STYLE/nopic.gif'"  alt="$rs[title]"  width="64" height="64" border="0"></a>
+                
+   <!--
+EOT;
+}print <<<EOT
+-->              
+                
+                <!--
+EOT;
+if($rs[picurl]==""){
+print <<<EOT
+-->
+             <a href="$rs[url]" title="$rs[title]"  target="_blank"><img src="$webdb[www_url]/images/$STYLE/nopic.gif" alt="$rs[title]"  width="64" height="64" border="0"></a>
+              <!--
+EOT;
+}print <<<EOT
+-->
+                
+                
+                </a>
+                </div>
+                <div class="li-m fl">
+                  <a href="$rs[url]" title="$rs[title]" target="_blank" style="color:$rs[cor]" class="fb14">$rs[title]</a>  $rs[tb] <a href="$fidurl" class="fbb">$rs[fname]</a><br/>
+                  <span class="fb14s f12">{$city_DB[name][$city_id]} {$zone_DB[name][$rs[zone_id]]} <br/>$rs[content] </span>
+                  
+                </div>
+                <div class="li-r fr">
+                $rs[posttime]
+                </div>
+                </li>
+                	
+                
+<!--
+EOT;
+}print <<<EOT
+-->
+		</ul>
+        
+        
+        
+        
+        	<div class="page mt10">$showpage</div>  
+            
+              <div class="liad mt10" >
+
+            <div class="liad-ad">
+             <!--这里是广告-->
+             <script type='text/javascript' src='/a_d/a_d_s.php?job=js&ad_id=AD_5437'></script>
+            </div>
+          
+          </div>
+     </div>
+  </div>
+</div>
+
+
+<div class="d-bottom mt10">
+
+
+<div class="d-box">
+      <div class="d-bottom-l fl">热门区域</div>
+      <div class="d-bottom-r fr">
+    
+    <!--
+EOT;
+$i=0;
+foreach($city_DB[name] AS $key=>$value){
+if(!$key)continue;
+$i++;
+if($i>32)break;
+$url=get_info_url('',$fid,$key);
+print <<<EOT
+-->
+          <a href="$url" target="_blank" title="{$city_DB[name][$key]}{$fidDB[name]}">{$city_DB[name][$key]}{$fidDB[name]}</a> 
+           
+          <!--
+EOT;
+}
+print <<<EOT
+-->
+ </div>
+    </div>
+
+<div class="d-box">
+  <div class="d-bottom-l fl">相关类目</div>
+  <div class="d-bottom-r fr"><!--
+EOT;
+foreach($Fid_db[$fidDB[fup]] AS $key=>$value){
+$url=get_info_url('',$key,$city_id);
+print <<<EOT
+-->
+          <a href="$url" target="_blank" title="{$city_DB[name][$city_id]}{$Fid_db[name][$key]}">{$city_DB[name][$city_id]}{$Fid_db[name][$key]}</a>  
+          
+          <!--
+EOT;
+}
+print <<<EOT
+--></div> 
+
+</div>
+
+
+     <div class="d-box">
+      <div class="d-bottom-l fl">周边城市</div>
+      <div class="d-bottom-r fr">
+    
+   <!--
+EOT;
+foreach($sortdb AS $key=>$rs){
+$url=get_info_url('',$key,$city_id);
+if($rs[domain]==""){
+   $url="/".$rs[dirname]."/";
+}else{
+   $url=$rs[domain]."/";
+}
+print <<<EOT
+-->   <a href="{$url}{$fidDB[dir_name ]}/" target="_blank"  title="{$rs[name]}{$fidDB[name]}兼职" >{$rs[name]}{$fidDB[name]}</a>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+
+ </div>
+    </div>
+    
+
+    
+     
+
+
+</div>
+
+
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+  
+  $('.libg').mousemove(function(){
+  $(this).addClass("libgon");
+  });
+  
+  $('.libg').mouseleave(function(){
+   $(this).removeClass("libgon");
+  });
+  
+ 
+  
+});
+
+</script>
+<!--
+EOT;
+?>
+-->

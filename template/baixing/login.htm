@@ -1,0 +1,341 @@
+<!--
+<?php
+print <<<EOT
+-->
+<SCRIPT LANGUAGE="JavaScript" src="/images/jquery.js"></SCRIPT>
+
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/$STYLE/index.css" />
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/$STYLE/qita.css" />
+
+<div id="bx-head-box">
+  <div class="bx-head-box">
+    <div class="head-box-l">
+     <ul>
+      <li>
+      <a href="$city_url"><img src="$webdb[www_url]/images/$STYLE/logo.png"  alt="{$city_DB[name][$city_id]}" title="{$city_DB[name][$city_id]}"  /></a></li>
+      <li class="waicong_com_cityname"><a href="$city_url" title="{$city_DB[name][$city_id]}" >{$city_DB[name][$city_id]}</a> </li>
+      </ul> 
+    </div>
+    <div class="head-box-m">
+     <form name="form_headsearch" method="GET" action="$city_url/search.php" target="_blank" onsubmit="return cksearch();">
+        <input type="text" name="keyword" class="so-text" value="请输入关键字或分类名"  onFocus="if (this.value == '请输入关键字或分类名') {this.value = '';}" onBlur="if (this.value == '') {this.value = '请输入关键字或分类名';}"  >
+        <input type="submit" value=" " class="so-btn"/>
+        <input type="hidden" name="action" value="search">
+      </form>
+    </div>
+    <div class="head-box-r"><a href="/post.php" title="免费发布信息" target="_blank" >免费发布信息</a></div>
+  </div>
+</div>
+
+
+<div class="w980">
+ 
+<div class="bx-login">
+
+  <div class="bx-login-l fr">
+  <div class="zc3">还没有注册帐号？10秒钟注册!</div>
+<!--
+EOT;
+//if(!$_fromurl&&!$step){
+$_fromurl=urlencode($_fromurl);
+{
+print <<<EOT
+-->
+           
+			<form name="form1" method="post" action="$webdb[www_url]/do/reg.php?f" onsubmit="return regpost();">
+              
+<!--
+EOT;
+if($webdb[RegCompany]){print <<<EOT
+-->
+					  
+                        会员类型:
+                         
+                          <input type="radio" name="grouptype" value="0" style="border:0px;" checked>
+                          个人用户 
+                          <input type="radio" name="grouptype" value="1" style="border:0px;">
+                          企业用户
+                      
+<!--
+EOT;
+}print <<<EOT
+-->
+			
+			
+			<!--
+EOT;
+if($webdb[reg_group]&&$webdb[reg_group]!='8'){
+$detail=explode(",",$webdb[reg_group]);
+if(!in_array(8,$detail)){
+$detail[-1]=8;
+ksort($detail);
+}
+$groupck[8]=' checked ';
+print <<<EOT
+-->
+					  
+                        所属会员组:
+                         
+						
+	<!--
+EOT;
+foreach($detail AS $value){
+print <<<EOT
+-->
+                          <input type="radio" {$groupck[$value]} name="groupid" value="$value" style="border:0px;" >
+                          {$ltitle[$value]}
+<!--
+EOT;
+}print <<<EOT
+-->	
+						  
+						  
+                      
+<!--
+EOT;
+}
+print <<<EOT
+-->		  
+                        
+                        <p><strong>用户名：</strong>
+                         
+                          
+                        
+                      <input type="text" name="username" style="border:1px solid #ddd; height:30px;line-height:30px;width:200px; color:#666;" id="reg_username" onBlur="ckdata('reg_username','username_msg','name')"> <span id="username_msg"></span></p>
+                      
+                       
+                        
+                      
+                      
+                        <p><strong>密码：</strong>
+                         
+                            <input type="password" name="password" style="border:1px solid #ddd; height:30px;line-height:30px;width:200px; color:#666;" id="reg_password" onBlur="ckdata('reg_password','password_msg','pwd')"> <span id="password_msg"></span></p>
+                        
+                      
+                      
+                        <p><strong>确认密码：</strong>
+                         
+                          <input type="password" name="password2" style="border:1px solid #ddd; height:30px;line-height:30px;width:200px; color:#666;" id="reg_password2"> <span></span></p>
+                          
+                       <p><strong>邮箱：</strong>
+                         
+                            <input type="text" name="email"   style="border:1px solid #ddd; height:30px;line-height:30px;width:200px; color:#666;" id="reg_email" onBlur="ckdata('reg_email','email_msg','email')"> <span id="email_msg"></span>
+<!--
+EOT;
+if($webdb[yzNumReg] == 2){
+print <<<EOT
+-->
+					
+                        <p><strong>注 册 码：</strong>
+                         
+                          <input type="text" name="yznum" size="8"/>
+                          &nbsp;<br>
+                          请在右边方框输入手机号码获取注册码 
+                          <input type="text" id="mobblenum" size="20" name="mobphone" />
+                          <input  value="发送短信" type="button"  onClick="sendsms(2);"/></p>
+                        
+                      
+<!--
+EOT;
+}
+elseif($webdb[yzNumReg] == 1){
+print <<<EOT
+-->
+					
+                        <p><strong>注 册 码：</strong>
+                         
+                          <input type="text" onfocus="setStyle(this.id)" style="border:1px solid #ddd; height:30px;line-height:30px;width:100px; color:#666;" onBlur="outStyle(this.id)" id="chucenma" name="yznum" size="8"/>
+                          
+                         <input  value="发送邮件" type="button" style=" margin-left:10px;	color:#FFF;
+	background:#6FB301; 
+	height:32px; padding:0px 5px; line-height:32px; font-weight:bold;
+	border:none;
+ "  onClick="sendsms(1);"/>
+                          
+                          </p>
+                        
+                              
+<!--
+EOT;
+}
+if($webdb[yzImgReg]){
+print <<<EOT
+-->
+                      
+                        <p><strong>验&nbsp;&nbsp;证&nbsp;&nbsp;码：</strong>
+                        <input type="text" name="yzimg" size="8" onfocus="setStyle(this.id)" onBlur="outStyle(this.id)" id="yanzhenma">
+<!-- 
+EOT;
+if($webdb[YzImg_voice]){
+print <<<EOT
+-->
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="0" height="0" id="code_play" align="middle">
+<param name="allowScriptAccess" value="always" />
+<param name="FlashVars" value="url=$webdb[www_url]/do/voice_code.php" />
+<param name="movie" value="$webdb[www_url]/images/default/code_play.swf"/>
+<param name="quality" value="high" />
+<param name="bgcolor" value="#ffffff" />
+<embed id="code_play" name="code_play" src="$webdb[www_url]/images/default/code_play.swf"  FlashVars="url=$webdb[www_url]/do/voice_code.php" quality="high" bgcolor="#ffffff" width="0" height="0" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+</object>
+<a href="javascript:void(0);" onclick="javascript:readVoiceCode();" style="color:waicong" title="点击获取验证码"><img src="$webdb[www_url]/images/default/seccodeplayer.gif"/>点击获取验证码</a> (请输入你听到的字符)
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function readVoiceCode()
+{
+    window.document.code_play.SetVariable("isPlay", "1");
+}
+//-->
+</SCRIPT></p>
+<!--
+EOT;
+}else{
+print <<<EOT
+-->
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write('<img border="0" name="imageField" onclick="this.src=this.src+Math.random();" src="$webdb[www_url]/do/yzimg.php?'+Math.random()+'">');
+//-->
+</SCRIPT>
+<!-- 
+EOT;
+}
+print <<<EOT
+-->
+               
+                                
+<!--
+EOT;
+}
+print <<<EOT
+-->
+                    
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var filed_id='';
+var filed_name='';
+function ckregdata(a,b){
+	filed_id=a;
+	filed_name=b;
+}
+function ckregdatapost(){
+	id_array=filed_id.split(',');
+	name_array=filed_name.split(',');
+	for(var i=0;i<id_array.length;i++){
+		if(id_array[i]!=''&&document.getElementById(id_array[i]).value==''){
+			alert("""+name_array[i]+'"不能为空');
+			document.getElementById(id_array[i]).focus();
+			return false;
+		}
+	}
+}
+document.write('<script src="$webdb[www_url]/images/default/setday.js"><\/script>');
+/*如要为页面布局考虑的话，你可以把template\default\regfield.htm里边的内容复制过来，然后把以下两行删除即可*/
+document.write('<div id="showRegDiv"></div>');
+AJAX.get("showRegDiv","$webdb[www_url]/do/regfield.php?job=reg");
+//-->
+</SCRIPT>
+                    
+                    
+                    <div class="hbb2">
+
+  <input name="" type="checkbox"  style="vertical-align: middle;"value="" checked="checked" /> 我接受$webdb[webname]服务条款</a>
+</div>
+                    
+                          <input type="submit" name="Submit3" value=" "  class="login-btn">
+                          <input type="hidden" name="step" value="2">
+                          <input type="hidden" value="$_fromurl" name="jumpto">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function regpost(){
+	if(document.getElementById('reg_username').value==''){
+		alert('用户名不能为空');
+		document.getElementById('reg_username').focus();
+		return false;
+	}
+	if(document.getElementById('reg_email').value==''){
+		alert('邮箱不能为空');
+		document.getElementById('reg_email').focus();
+		return false;
+	}
+	if(document.getElementById('reg_password').value==''){
+		alert('密码不能为空');
+		document.getElementById('reg_password').focus();
+		return false;
+	}
+	if(document.getElementById('reg_password2').value==''){
+		alert('重复密码不能为空');
+		document.getElementById('reg_password2').focus();
+		return false;
+	}
+	if(ckregdatapost()==false){
+		return false;
+	}
+}
+function ckdata(a,b,c){
+	AJAX.get(b,"$webdb[www_url]/do/job.php?job=ckreg&name="+document.getElementById(a).value+"&type="+c);
+}
+function sendsms(type){
+	if(type == 2){
+		if(document.getElementById('mobblenum').value==''){
+			alert('请输入手机号码');
+			document.getElementById('mobblenum').focus();
+			return false;
+		}
+		window.open("$webdb[www_url]/do/job.php?job=regsendnum&num="+document.getElementById('mobblenum').value+"&type="+type);
+	}	
+	if(type == 1){
+		if(document.getElementById('reg_email').value==''){
+			alert('请输入邮箱帐号');
+			document.getElementById('reg_email').focus();
+			return false;
+		}
+		window.open("$webdb[www_url]/do/job.php?job=regsendnum&num="+document.getElementById('reg_email').value+"&type="+type);
+	}
+}
+//-->
+</SCRIPT>                        
+                      
+                   
+                  
+               </form>
+           
+         
+<!--
+EOT;
+}print <<<EOT
+--> 
+      
+    </div>
+  <div class="bx-login-r fl">
+       <div class="h13" style="color:#000;">用户登录</div>
+<form name="form_login" method="post" action="$webdb[www_url]/do/login.php">
+
+<div class="hb">
+<div class="hb1 fl">帐号：</div> <div class="hb2"><input type="text" name="username" class="hbzh"  ></div></div>
+
+
+<div class="hb">
+<div class="hb1 fl">密码：</div> <div class="hb2"><input type="password" name="password" class="hbmm"></div>
+
+</div>
+
+<div class="hbb">
+
+  <input name="" type="checkbox"  style="vertical-align: middle;"value="" checked="checked" />下次自动登录(公共场所请勿勾选) <a href="$webdb[www_url]/do/sendpwd.php">忘记密码？</a>
+</div>
+ <input type="submit" name="Submit" value="登 录"  class="hbdl">
+     
+         <input type="hidden" name="step" value="2">
+         <input class="radio" type="hidden" name="cookietime" value="86400" >            
+      </form>
+<p style=" margin-left:40px;">
+<A HREF="$webdb[www_url]/do/qq_login.php?&f=top&cityurl=$webdb[www_url]?=.html"><img border=0 src="$webdb[www_url]/images/default/qq_login_big.png"></A></p>
+</div>
+</div>
+</div>
+<!--
+EOT;
+?>
+-->

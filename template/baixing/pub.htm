@@ -1,0 +1,113 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/$STYLE/qita.css" />
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/$STYLE/list.css" />
+<script src="$webdb[www_url]/images/$STYLE/jquery.js" type="text/javascript"></script>
+<div id="bx-head-box">
+  <div class="bx-head-box">
+    <div class="head-box-l" style=" width:500px; overflow:hidden;">
+      <li><a href="$city_url"><img src="$webdb[www_url]/images/$STYLE/logo.png"  alt="{$city_DB[name][$city_id]}" title="{$city_DB[name][$city_id]}"  /></a></li>
+         <li class="waicong_com_cityname"><a href="$city_url" title="{$city_DB[name][$city_id]}" >{$city_DB[name][$city_id]}</a> </li>
+       <li>><a href="javascript:void();">发布信息</a></li></ul>
+    </div>
+ 
+  </div>
+</div>
+
+
+<div class="w980">
+
+<div class="pubimg"><img src="$webdb[www_url]/images/$STYLE/pub.jpg"  /></div>
+
+<style type="text/css">
+
+.allpost { height:640px; position:relative; width:180px; background:url($webdb[www_url]/images/baixing/pubico.png) 5px 15px no-repeat #F2F1EC; padding-top:10px; margin-bottom:20px; z-index:999;}
+.bs {   font-size:14px; text-indent:30px; }
+.bss { line-height:40px;width:180px; float:left; cursor:pointer; }
+.ss { display:none; position:absolute; background:#FAFAFA;top:0px;height:650px; left:180px; width:780px;}
+.ss a { display:block;line-height:40px;width:180px; float:left; margin-left:10px; margin-top:10px;}
+.ss a:hover {background:#F2F1EC;color:#333; text-decoration:none;}
+.db { display:block;}
+
+.xzdl {background:#F5F6F4;font-weight: bold;line-height: 25px; font-size:12px; text-indent:0px; padding: 0 15px; width:950px;}
+.bss2 { display:block;}
+.bss.lion { background:url($webdb[www_url]/images/baixing/pubicoh.png) 0px -362px #FAFAFA  no-repeat; }
+.bsss2 { background:url($webdb[www_url]/images/baixing/pubicoh.png) 0px -362px #FAFAFA  no-repeat; }
+</style>
+
+<div class="allpost">
+<!--
+EOT;
+$array=array_flip($Fid_db[0]);
+$array=array_chunk($array,3);
+foreach($array AS $key_1=>$array1){
+print <<<EOT
+-->  <!--
+EOT;
+foreach($array1 AS $key_2){
+print <<<EOT
+-->  
+               
+                       
+                  <div class="bs bigsort" >
+                  
+                  <div class="bss bsss$key_2">{$Fid_db[name][$key_2]}</div>
+				        
+                  <div class="ss smallsort sub-con bss$key_2 "> 
+                    <!--
+EOT;
+$i=0;
+foreach($Fid_db[$key_2] AS $key_3=>$rs){
+$i++;
+if($webdb[Info_showsortnum]>0&&$i>$webdb[Info_showsortnum]){break;}
+$InfoNum[$key_3]=intval($InfoNum[$key_3]);
+print <<<EOT
+-->
+                    <a href="$city_url/post.php?city_id=$city_id&zone_id=$zone_id&street_id=$street_id&fid=$key_3">{$Fid_db[name][$key_3]}</a>
+                    <!--
+EOT;
+}print <<<EOT
+-->
+                  </div>
+                  </div>
+                
+              <!--
+EOT;
+}print <<<EOT
+--> 
+
+<!--
+EOT;
+}print <<<EOT
+--> 
+
+
+
+</div>
+
+
+</div>
+
+<script type="text/javascript" src="$webdb[www_url]/images/ganji/jquery.js"></script>
+<script type="text/javascript"> 
+$(document).ready(function(){ 
+var intervalID; 
+var curLi; 
+$(".bss").click(function(){//鼠标点击也可以切换 
+$(".bsss2").removeClass("bsss2");
+curLi=$(this); 
+clearInterval(intervalID); 
+$(".db").removeClass("db"); 
+$(".sub-con").eq($(".bss").index(curLi)).addClass("db"); 
+$(".lion").removeClass("lion"); 
+curLi.addClass("lion"); 
+}); 
+
+}); 
+</script>
+<!--
+EOT;
+?>
+-->

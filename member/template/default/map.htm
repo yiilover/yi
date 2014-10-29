@@ -1,0 +1,113 @@
+<!--
+<?php
+include(dirname(__FILE__)."/map.php");
+$onlineip = ipfrom($onlineip);
+print <<<EOT
+-->
+
+
+
+
+
+
+ <div class="r-m">
+       认证：
+        
+        <!--
+EOT;
+if($userdb[grouptype]==1){
+print <<<EOT
+--> 
+            <img src="$webdb[www_url]/member/images/company_icon.gif" alt="企业会员"  title="企业会员" /> 
+            <!--
+EOT;
+}
+print <<<EOT
+-->
+            <!--
+EOT;
+if($userdb[idcard_yz]==1){
+print <<<EOT
+-->
+            <img src="$webdb[www_url]/images/default/yz/idcard_1.gif" alt="身份认证会员" title="身份认证会员" /> 
+            <!--
+EOT;
+}else{
+print <<<EOT
+-->
+            <img src="$webdb[www_url]/images/default/yz/idcard_0.gif" alt="身份还未认证" title="身份还未认证" /> 
+            <!--
+EOT;
+}
+print <<<EOT
+-->
+
+ <!--
+EOT;
+if($userdb[mob_yz]==1){
+print <<<EOT
+-->
+            <img src="$webdb[www_url]/images/default/yz/mob_1.gif" alt="手机认证会员" title="手机认证会员"> 
+            <!--
+EOT;
+}else{
+print <<<EOT
+-->
+            <img src="$webdb[www_url]/images/default/yz/mob_0.gif" alt="手机还未认证" title="手机还未认证"> 
+            <!--
+EOT;
+}
+print <<<EOT
+--> 
+<!--
+EOT;
+if($userdb[email_yz]==1){
+print <<<EOT
+-->
+            <img src="$webdb[www_url]/images/default/yz/email_1.gif" alt="邮箱认证会员" title="邮箱认证会员"> 
+            <!--
+EOT;
+}else{
+print <<<EOT
+-->
+            <img src="$webdb[www_url]/images/default/yz/email_0.gif" alt="邮箱还未认证" title="邮箱还未认证"> 
+            <a href="/member/yz.php?job=email" target="_blank">去认证</a>
+            <!--
+EOT;
+}
+print <<<EOT
+-->
+
+
+<a href="/do/buymoneycard.php" target="_blank">充值</a>
+
+
+<!--
+EOT;
+if($lfjdb[icon]){print <<<EOT
+-->   <img src="$lfjdb[icon]"  width="80" height="80">
+<!--
+EOT;
+}else{print <<<EOT
+-->  
+<img src="$webdb[www_url]/images/default/noface.gif"  width="80" height="80">
+<!--
+EOT;
+}print <<<EOT
+-->
+            
+              
+              <p>
+               $lfjid<br/>
+              余额：$lfjdb[money] 元<br/>
+              编号：$lfjuid
+
+              </p>
+      
+      </div>
+       
+
+<!--
+EOT;
+?>
+-->

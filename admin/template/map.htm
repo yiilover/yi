@@ -1,0 +1,98 @@
+<html>
+<head>
+<title>后台管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<link rel="stylesheet" href="images/style.css" type="text/css">
+
+</head>
+<body> <!--
+<?php
+print <<<EOT
+-->
+
+
+ 
+ 
+ 
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr class="head"> 
+    <td height="23" colspan="2">统计信息</td>
+  </tr>
+  <tr  style=" height:30px; line-height:30px; overflow:hidden;" >
+  
+  <td width="50%" style=" font-size:16px; padding:10px 0px;   color:#6FB301; font-weight:bold;">信息：<span style=" color:#F00;">{$fenleiNUM}</span> 条</td>
+    <td width="50%"  style=" font-size:16px; padding:10px 0px;  color:#6FB301; font-weight:bold;">会员：<span style=" color:#F00;">{$Member}</span> 位</td>
+    </td>
+  </tr>
+  
+  <tr>
+    <td colspan="2" style="color:#6FB301;  border-bottom:1px solid #ddd; padding:5px 0px; font-size:14px; font-weight:bold;"> 
+              
+
+欢迎<!--
+EOT;
+if($admin_name==$userdb[username]){
+print <<<EOT
+--> 超级管理员 
+              <!--
+EOT;
+}else{
+print <<<EOT
+-->{$ltitle[$userdb[groupid]]} 
+              <!--
+EOT;
+}
+print <<<EOT
+--> ，$userdb[username]
+
+</td>
+  </tr>
+  
+  <tr bgcolor="#FFFFFF" > 
+    <td width="50%" style=" padding-top:10px;">服务端信息：$systemMsg[SERVER_SOFTWARE]</td>
+    <td width="50%" style=" padding-top:10px;">邮件模式：$systemMsg[sys_mail]</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td width="50%">PHP版本：$systemMsg[sysversion]</td>
+    <td width="50%">服务器IP：$systemMsg[SERVER_ADDR]</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td width="50%">MYSQL版本：$systemMsg[mysqlVersion]</td>
+    <td width="50%">服务器端口：$systemMsg[SERVER_PORT]</td>
+  </tr>
+    <tr bgcolor="#FFFFFF"> 
+    <td width="50%">是否允许文件上传：$systemMsg[file_uploads]<span help="1">（如果不允许可把php.ini里的file_uploads=Off改成file_uploads=On，重启服务器即可）</span></td>
+    <td width="50%">上传文件存放的临时目录：$systemMsg[upload_tmp_dir]</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td width="50%">最大上传限制：$systemMsg[max_upload]<span help="1">（需更大可修改php.ini里的upload_max_filesize值，重启服务器即可）</span></td>
+    <td width="50%">服务器所在时间：$systemMsg[systemtime]</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td width="50%">最大执行时间：$systemMsg[max_ex_time]<span help="1">（需更大可修改php.ini里的max_execution_time值，重启服务器即可）</span></td>
+    <td width="50%">网站所在磁盘物理位置：$systemMsg[DOCUMENT_ROOT]</td>
+  </tr>
+   <tr bgcolor="#FFFFFF"> 
+    <td width="50%">空间限制内存：$systemMsg[memory_user_limit]<span help="1">（需更大可修改php.ini里的memory_limit值，重启服务器即可）</span></td>
+	<td width="50%">当前文件路径：$systemMsg[SCRIPT_FILENAME]</td>  
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td width="50%">是否支持采集：$systemMsg[allow_url_fopen]<span help="1">（如果不支持可把php.ini里的allow_url_fopen=Off改成allow_url_fopen=On，重启服务器即可）</span></td>
+     <td width="50%">Zend Optimizer版本：$systemMsg[zendVersion]</td>
+  
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td width="50%">是否支持GD2库：$systemMsg[gdpic]<span help="1">（如果不支持可把php.ini中;extension=php_gd2.dll前面的;去掉，重启服务器即可）</span></td>
+    <td width="50%">当前登陆IP：$systemMsg[onlineip]</td>
+  </tr>
+   <tr bgcolor="#FFFFFF"> 
+    <td width="50%">是否允许Cookie：$systemMsg[ifcookie]<span help="1">（如果不允许可在Windows控制面板 ,"Internet选项" ,隐私设置中调整）</span></td>
+    <td width="50%">当前域名：$systemMsg[SERVER_NAME]</td>
+  </tr>
+</table>
+
+<!--
+EOT;
+?>
+-->

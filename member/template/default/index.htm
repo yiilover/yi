@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+<?php
+print <<<EOT
+-->
+<head>
+<title>会员中心首页</title>
+<link rel="stylesheet" type="text/css" href="images/default/css.css">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+</head>
+<script type="text/javascript">
+function SetCwinHeight(){
+	var obj=document.getElementById("member_mainiframe"); //iframe id
+	if (document.getElementById){
+		if (obj && !window.opera){
+			if (obj.contentDocument && obj.contentDocument.body.offsetHeight){
+				obj.height = obj.contentDocument.body.offsetHeight;
+			}else if(obj.Document && obj.Document.body.scrollHeight){
+				obj.height = obj.Document.body.scrollHeight;
+			}
+			if(obj.height<500){
+				obj.height=500;
+			}
+		}else {
+			obj.height = 700;
+		}
+		//navigator.userAgent.toLowerCase().indexOf("msie 8.0") != -1
+		//obj.document.getElementById("footer").style.display='none';
+	}
+}
+</script>
+
+
+
+<body>
+<div id="TopDiv">
+<ul>
+<li> <a href="$webdb[www_url]">网站首页</a> | &nbsp;</li>
+<li> <a href="/member/index.php?&f=top&cityurl=$webdb[www_url]?=.html">会员中心</a> | &nbsp;</li>
+<li> <a href="$city_url/">{$city_DB[name][$city_id]}</a> <!--
+EOT;
+if(count($city_DB[name])>1){
+print <<<EOT
+-->
+		<a href="$webdb[www_url]/allcity.php?&f=top&cityurl=$webdb[www_url]?=.html" class="h">[切换城市]</a>
+<!--
+EOT;
+}print <<<EOT
+--> &nbsp;|&nbsp;</li>
+<li> 欢迎! <span style=" font-size:14px; ">$lfjid</span>  
+            <a href="$webdb[www_url]/do/login.php?action=quit" style=" font-weight:500; color:#999;">退出</a> </li>
+            </ul>
+</div>
+<div id="Iframe"> 
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" id="header">
+    <tr> 
+      <td> 
+       <div class="bx-indexhead">
+    <div class="bx-indexlogo">
+     <ul>
+         <li><a href="/member/index.php"> <img src="$webdb[www_url]/images/default/hyzx.jpg"   /></a> </li>
+         <li class="liweizhi"> > <a href="/member/index.php">个人中心</a></li>
+         <li class="lipost"><a href="/post.php?fid=$fid&city_id=$city_id" target="_blank">&nbsp;</a></li>
+      </ul>
+    </div>
+ 
+  
+ </div> 
+      </td>
+    </tr>
+  </table>
+  <div  style="height:10px; overflow:hidden"></div>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" id="MainContainer">
+    <tr> 
+      <td class="LeftMenu">     
+      	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="sidetable">
+         
+          <tr> 
+            <td class="middle"> <h1 style="font-size:18px; font-weight:bold; color:green;">用户中心</h1>
+<!--
+EOT;
+$i=0;
+foreach($base_menudb AS $MenuName=>$array2){
+$i++;
+if($power<$array2[power])continue;
+if(strstr($array2[link],'../')||strstr($array2[link],'homepage.php')){
+$target='_self';
+}else{
+$target='member_mainiframe';
+}print<<<EOT
+-->
+              <div class="div$i"><span><A HREF='$array2[link]' onclick="self.scroll(0,0);" target='member_mainiframe'>$MenuName</A></span></div>
+<!--
+EOT;
+}print <<<EOT
+-->
+            </td>
+          </tr>
+        </table>
+<!--
+EOT;
+$jj = 0;
+foreach($menudb AS $SortName=>$array){
+$jj++;
+$class = $jj<3 ? "class=\"Show\"" : "class=\"Show\"";
+print<<<EOT
+-->
+        <dl  $class > 
+           <dt id="di$jj" >{$SortName}：</dt>
+<!--
+EOT;
+foreach($array AS $MenuName=>$array2){
+$jjj++;
+if($power<$array2[power])continue;
+if($array2[target]){
+$target=$array2[target];
+}elseif(ereg("^../",$array2[link])){
+$target='_self';
+}else{
+$target='member_mainiframe';
+
+}
+print<<<EOT
+-->
+          <dd id="div$jjj"><A HREF='$array2[link]' onclick="self.scroll(0,0);" target='member_mainiframe' >$MenuName</A></dd>
+<!--
+EOT;
+}print<<<EOT
+-->
+        </dl>
+<!--
+EOT;
+}print<<<EOT
+--> 
+
+      </td>
+      <td class="RightMain">     
+      
+    <div class="r-m">
+             
+             
+             <div class="r-m-l">
+             <!--
+EOT;
+if($lfjdb[icon]){print <<<EOT
+-->   <img src="$lfjdb[icon]"  width="80" height="80"><br/>
+<a href="/member/userinfo.php?job=edit" onclick="self.scroll(0,0);" target='member_mainiframe'>修改头像</a>
+<!--
+EOT;
+}else{print <<<EOT
+-->  
+<img src="/images/default/noface.gif"  width="80" height="80"><br/>
+<a href="/member/userinfo.php?job=edit" onclick="self.scroll(0,0);" target='member_mainiframe'>修改头像</a>
+<!--
+EOT;
+}print <<<EOT
+-->
+       
+             
+             </div>
+             
+             
+             
+              <div class="r-m-r">
+             
+             <p class="p1">您好：<span>$lfjid</span>  
+             
+             </p>
+             <p>
+           
+             级别：  $groupdb[grouptitle]  </p>
+             <p class="p2">积分：<span>$lfjdb[money]</span></p>
+             <p  class="p3">邮箱：
+             <!--
+EOT;
+if($lfjdb[email_yz]==1){
+print <<<EOT
+-->
+            <img src="$webdb[www_url]/images/default/yz/email_1.gif" alt="邮箱认证会员" title="邮箱认证会员">
+            <!--
+EOT;
+}else{
+print <<<EOT
+-->
+            <img src="$webdb[www_url]/images/default/yz/email_0.gif" alt="邮箱还未认证" title="邮箱还未认证"> 
+            <a href="/member/yz.php?job=email" onclick="self.scroll(0,0);" target='member_mainiframe'>去认证</a>>>
+            <!--
+EOT;
+}
+print <<<EOT
+-->
+
+             
+             
+
+
+
+      </p>
+              
+              
+      </div>
+      </div>
+       
+      	
+        <iframe width="100%" name="member_mainiframe" id="member_mainiframe" height="100"  onload="Javascript:SetCwinHeight();self.scroll(0,0);" scrolling="no" marginwidth=0 marginheight=0 frameborder="0" src="/f/member/list.php"></iframe>
+        
+      </td>
+    </tr>
+  </table>
+
+
+<div class="w980">
+   <div class="bx-foot">&reg; 2013 $webdb[webname] - <a href="/about/about.html">关于我们</a> - <a href="/about/gongyue.html">$webdb[webname]公约</a> - <a href="/about/zhaopin.html">招贤纳士</a> - <a href="/about/tuiguang.html">商家推广</a> - <a href="/about/tel.html">电话被冒用</a> - <a href="/about/lianxi.html">联系我们</a> - <a href="http://www.miibeian.gov.cn" target="_blank" >{$webdb[miibeian_gov_cn]}</a> </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+<!--
+EOT;
+?>
+-->

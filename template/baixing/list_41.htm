@@ -1,0 +1,518 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/$STYLE/list.css" />
+<script src="$webdb[www_url]/images/$STYLE/jquery.js" type="text/javascript"></script>
+<div id="bx-head-box">
+  <div class="bx-head-box">
+    <div class="head-box-l">
+      <ul>
+      <li><a href="$city_url"><img src="$webdb[www_url]/images/$STYLE/logo.png"  alt="{$city_DB[name][$city_id]}" title="{$city_DB[name][$city_id]}"  /></a></li>
+       <li class="waicong_com_cityname"><a href="$city_url" title="{$city_DB[name][$city_id]}" >{$city_DB[name][$city_id]}</a> </li>
+       <li>{$GuideFid[$fid]}</li>
+       <li class="waicong_rows">（{$totallist}条信息）</li></ul>
+    </div>
+    <div class="head-box-m">
+     
+    </div>
+    <div class="head-box-r">
+      <div class="head-box-r-r">  </div> 
+    <div class="head-box-r-m"><a href="$city_url/post.php?fid=$fid&city_id=$city_id" title="免费发布{$fidDB[name]}信息" target="_blank" >免费发布{$fidDB[name]}信息</a></div>
+    <div class="head-box-r-l"> </div>
+    
+    </div>
+  </div>
+</div>
+<div class="w980"> 
+
+
+
+
+
+
+	<div class="waicong_bigsort">
+     <div class="waicong_list_1">
+      <ul>
+        <li class="waicong_bingsort_a">地区：</li>
+  <li class="waicong_bingsort_b">
+   <span id="zone_street_menu">
+        <!--
+EOT;
+if($city_id){
+$url=get_info_url('',$fid,$city_id,'','',$TempSearch_array);
+print <<<EOT
+--><span class="zone" id="zone_td"><span id="zone_span_0"><a href="$url" title="{$city_DB[name][$city_id]}">全{$city_DB[name][$city_id]}</a></span> 
+            <!--
+EOT;
+foreach($zone_DB[name] AS $key=>$value){
+$url=get_info_url('',$fid,$city_id,$key,'',$TempSearch_array);
+print <<<EOT
+-->
+            <span class="choose" id="zone_span_$key"><a href="$url" title="$value">$value</a></span> 
+            <!--
+EOT;
+}
+print <<<EOT
+-->
+          </span>
+     
+   
+        
+          <span class="street" id="street_td"> 
+         
+            <!--
+EOT;
+foreach($street_DB[$zone_id] AS $key=>$value){
+$url=get_info_url('',$fid,$city_id,$zone_id,$key,$TempSearch_array);
+print <<<EOT
+-->
+            <a id="street_a_$key" href="$url" title="$value">$value</a> 
+            <!--
+EOT;
+}
+print <<<EOT
+-->  
+
+
+  
+          </span>
+          
+            </span></li>
+       </ul>
+     </div>
+    <div class="waicong_list_2">
+     <ul>
+       <li class="waicong_bingsort_a">供求：</li>
+      <li class="waicong_bingsort_b">
+     <!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('huocheleixing'=>"$huocheleixing",'huochepinpai'=>"$huochepinpai",));
+print <<<EOT
+--><A HREF='$url' {$search_fieldDB[sortid][0]}>全部</A> <!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('huocheleixing'=>"$huocheleixing",'huochepinpai'=>"$huochepinpai",'sortid'=>'1'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[sortid]['1']}>转让</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('huocheleixing'=>"$huocheleixing",'huochepinpai'=>"$huochepinpai",'sortid'=>'2'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[sortid]['2']}>求购</A>  
+ <li class="waicong_bingsort_a">类型：</li>
+      <li class="waicong_bingsort_b">
+     <!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huochepinpai'=>"$huochepinpai",));
+print <<<EOT
+--><A HREF='$url' {$search_fieldDB[huocheleixing][0]}>全部</A> <!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huochepinpai'=>"$huochepinpai",'huocheleixing'=>'挖掘机'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huocheleixing]['挖掘机']}>挖掘机</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huochepinpai'=>"$huochepinpai",'huocheleixing'=>'厢式货车'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huocheleixing]['厢式货车']}>厢式货车</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huochepinpai'=>"$huochepinpai",'huocheleixing'=>'叉车'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huocheleixing]['叉车']}>叉车</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huochepinpai'=>"$huochepinpai",'huocheleixing'=>'自卸车'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huocheleixing]['自卸车']}>自卸车</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huochepinpai'=>"$huochepinpai",'huocheleixing'=>'装载机'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huocheleixing]['装载机']}>装载机</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huochepinpai'=>"$huochepinpai",'huocheleixing'=>'平板车'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huocheleixing]['平板车']}>平板车</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huochepinpai'=>"$huochepinpai",'huocheleixing'=>'半挂车'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huocheleixing]['半挂车']}>半挂车</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huochepinpai'=>"$huochepinpai",'huocheleixing'=>'吊车'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huocheleixing]['吊车']}>吊车</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huochepinpai'=>"$huochepinpai",'huocheleixing'=>'搅拌车'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huocheleixing]['搅拌车']}>搅拌车</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huochepinpai'=>"$huochepinpai",'huocheleixing'=>'油罐车'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huocheleixing]['油罐车']}>油罐车</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huochepinpai'=>"$huochepinpai",'huocheleixing'=>'水泥罐车'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huocheleixing]['水泥罐车']}>水泥罐车</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huochepinpai'=>"$huochepinpai",'huocheleixing'=>'压路机'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huocheleixing]['压路机']}>压路机</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huochepinpai'=>"$huochepinpai",'huocheleixing'=>'推土机'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huocheleixing]['推土机']}>推土机</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huochepinpai'=>"$huochepinpai",'huocheleixing'=>'洒水车/清扫车'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huocheleixing]['洒水车/清扫车']}>洒水车/清扫车</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huochepinpai'=>"$huochepinpai",'huocheleixing'=>'其他货车'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huocheleixing]['其他货车']}>其他货车</A>  
+ <li class="waicong_bingsort_a">品牌：</li>
+      <li class="waicong_bingsort_b">
+     <!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huocheleixing'=>"$huocheleixing",));
+print <<<EOT
+--><A HREF='$url' {$search_fieldDB[huochepinpai][0]}>全部</A> <!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huocheleixing'=>"$huocheleixing",'huochepinpai'=>'东风'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huochepinpai]['东风']}>东风</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huocheleixing'=>"$huocheleixing",'huochepinpai'=>'威铃'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huochepinpai]['威铃']}>威铃</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huocheleixing'=>"$huocheleixing",'huochepinpai'=>'红岩'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huochepinpai]['红岩']}>红岩</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huocheleixing'=>"$huocheleixing",'huochepinpai'=>'悍威'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huochepinpai]['悍威']}>悍威</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huocheleixing'=>"$huocheleixing",'huochepinpai'=>'高栏'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huochepinpai]['高栏']}>高栏</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huocheleixing'=>"$huocheleixing",'huochepinpai'=>'江淮'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huochepinpai]['江淮']}>江淮</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huocheleixing'=>"$huocheleixing",'huochepinpai'=>'东风天龙'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huochepinpai]['东风天龙']}>东风天龙</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huocheleixing'=>"$huocheleixing",'huochepinpai'=>'凯马'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huochepinpai]['凯马']}>凯马</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huocheleixing'=>"$huocheleixing",'huochepinpai'=>'赛龙'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huochepinpai]['赛龙']}>赛龙</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huocheleixing'=>"$huocheleixing",'huochepinpai'=>'康明斯'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huochepinpai]['康明斯']}>康明斯</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huocheleixing'=>"$huocheleixing",'huochepinpai'=>'天龙'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huochepinpai]['天龙']}>天龙</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huocheleixing'=>"$huocheleixing",'huochepinpai'=>'斯太尔'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huochepinpai]['斯太尔']}>斯太尔</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huocheleixing'=>"$huocheleixing",'huochepinpai'=>'解放'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huochepinpai]['解放']}>解放</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huocheleixing'=>"$huocheleixing",'huochepinpai'=>'豪沃'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huochepinpai]['豪沃']}>豪沃</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huocheleixing'=>"$huocheleixing",'huochepinpai'=>'新大威'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huochepinpai]['新大威']}>新大威</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huocheleixing'=>"$huocheleixing",'huochepinpai'=>'奥龙'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huochepinpai]['奥龙']}>奥龙</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huocheleixing'=>"$huocheleixing",'huochepinpai'=>'德龙'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huochepinpai]['德龙']}>德龙</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huocheleixing'=>"$huocheleixing",'huochepinpai'=>'瑞沃奥威'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huochepinpai]['瑞沃奥威']}>瑞沃奥威</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huocheleixing'=>"$huocheleixing",'huochepinpai'=>'时代金刚'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huochepinpai]['时代金刚']}>时代金刚</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huocheleixing'=>"$huocheleixing",'huochepinpai'=>'欧曼'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huochepinpai]['欧曼']}>欧曼</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>"$sortid",'huocheleixing'=>"$huocheleixing",'huochepinpai'=>'其他'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[huochepinpai]['其他']}>其他</A>  
+ <!----> </li>
+
+ 
+           </ul> </div>  
+	</div>
+
+
+
+<div  class="bx-list">
+  <div class="bx-list-l fr">
+     
+     <div class="list-so">
+       <div class="list-so-so">
+       <form name="form_headsearch" method="GET" action="$city_url/search.php" target="_blank" onsubmit="return cksearch();">
+           <input type="text" name="keyword" class="nso-text" value="搜索{$fidDB[name]}"  onFocus="if (this.value == '搜索{$fidDB[name]}') {this.value = '';}" onBlur="if (this.value == '') {this.value = '搜索{$fidDB[name]}';}"   >
+           <input type="submit" value=" " class="nso-btn"/>
+           <input type="hidden" name="action" value="search">
+           </form>
+       
+       </div>
+     </div>
+      <div class="list-so-t cle mt10"><span>相关类目</span></div>
+   <div class="list-leimu" style=" border-top:none;">
+          <!--
+EOT;
+foreach($Fid_db[$fidDB[fup]] AS $key=>$value){
+$url=get_info_url('',$key,$city_id);
+print <<<EOT
+-->
+          <a href="$url" target="_blank" title="{$city_DB[name][$city_id]}{$Fid_db[name][$key]}">{$city_DB[name][$city_id]}{$Fid_db[name][$key]}</a>  
+          
+          <!--
+EOT;
+}
+print <<<EOT
+-->
+
+  </div> 
+  
+  
+  <div class="list-so-t cle mt10"><span>广告</span></div>
+   <div class="list-leimu" style="height:600px;">
+  
+     <script type='text/javascript' src='/a_d/a_d_s.php?job=js&ad_id=AD_8800'></script>
+
+  </div>  
+    
+  </div>
+  <div class="bx-list-r fl">
+     
+   
+          
+       
+        <!--
+EOT;
+}
+print <<<EOT
+-->
+        <SCRIPT LANGUAGE="JavaScript">
+<!--
+function zone_menu(zone_id){
+	obj=document.getElementById("zone_td").getElementsByTagName("span");
+	for(var i=0;i< obj.length;i++ ){
+		obj[i].className='';
+	}
+	document.getElementById("zone_span_"+zone_id).className='choose';
+}
+zone_menu("$zone_id");
+function street_menu(street_id){
+	obj=document.getElementById("street_td").getElementsByTagName("a");
+	for(var i=0;i< obj.length;i++ ){
+		obj[i].className='';
+	}
+	if(document.getElementById("street_a_"+street_id)!=null){
+		document.getElementById("street_a_"+street_id).className='choose';
+	}
+}
+street_menu("$street_id");
+//-->
+</SCRIPT>
+      
+     <div class="r-post">
+    
+      <a href="$city_url/post.php?fid=$fid&city_id=$city_id" target="_blank" title="立即免费发布{$fidDB[name]}信"> 立即免费发布{$fidDB[name]}信息</a>
+     
+     </div>
+     <div class="list-li mt10">
+     <ul>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$target=$rs[target]?'_blank':'_self';
+$rs[username] || $rs[username]='游客';
+print <<<EOT
+-->
+				<li class="libg">
+                <div class="li-l fl">
+             
+                             <!--
+EOT;
+if($rs[picurl]){
+print <<<EOT
+-->
+    
+                <a href="$rs[url]" title="$rs[title]" target="_blank"><img src="$rs[picurl]"  onerror="this.src='/images/$STYLE/nopic.gif'"  alt="$rs[title]" width="64" height="64" border="0"></a>
+                
+   <!--
+EOT;
+}print <<<EOT
+-->              
+                
+                <!--
+EOT;
+if($rs[picurl]==""){
+print <<<EOT
+-->
+              <a href="$rs[url]"  title="$rs[title]" target="_blank"><img src="$webdb[www_url]/images/$STYLE/nopic.gif"  alt="$rs[title]" width="64" height="64" border="0"></a>
+              <!--
+EOT;
+}print <<<EOT
+-->
+                
+                
+               
+                </div>
+                <div class="li-m fl">
+                  <a href="$rs[url]"  title="$rs[title]" style="color:$rs[cor]" target="_blank" class="fb14">$rs[title]</a> $rs[tb]<br/>
+                  <span class="fb14s f12">{$city_DB[name][$city_id]} {$zone_DB[name][$rs[zone_id]]} <span  class="f12">  $rs[content]</span></span>
+                  <br/><span class="fb14f f12">{$rs[huochejiage]}万元  &nbsp;&nbsp; <!----></span>
+                </div>
+                <div class="li-r fr">
+               {$rs[times]}
+                </div>
+                </li>
+                	
+                
+<!--
+EOT;
+}print <<<EOT
+-->
+		</ul>
+  
+        	<div class="page mt10">$showpage</div>
+
+     
+      <div class="liad mt10" >
+
+            <div class="liad-ad">
+             <!--这里是广告-->
+             <script type='text/javascript' src='/a_d/a_d_s.php?job=js&ad_id=AD_5437'></script>
+            </div>
+          
+          </div>
+     
+     
+     
+     
+     
+     </div>
+  </div>
+</div>
+
+
+<div class="d-bottom mt10">
+<div class="d-box">
+      <div class="d-bottom-l fl">热门区域</div>
+      <div class="d-bottom-r fr">
+    
+    <!--
+EOT;
+$i=0;
+foreach($city_DB[name] AS $key=>$value){
+if(!$key)continue;
+$i++;
+if($i>32)break;
+$url=get_info_url('',$fid,$key);
+print <<<EOT
+-->
+          <a href="$url" target="_blank" title="{$city_DB[name][$key]}{$fidDB[name]}">{$city_DB[name][$key]}{$fidDB[name]}</a> 
+           
+          <!--
+EOT;
+}
+print <<<EOT
+-->
+ </div>
+    </div>
+
+<div class="d-box">
+  <div class="d-bottom-l fl">相关类目</div>
+  <div class="d-bottom-r fr"><!--
+EOT;
+foreach($Fid_db[$fidDB[fup]] AS $key=>$value){
+$url=get_info_url('',$key,$city_id);
+print <<<EOT
+-->
+          <a href="$url" target="_blank" title="{$city_DB[name][$city_id]}{$Fid_db[name][$key]}">{$city_DB[name][$city_id]}{$Fid_db[name][$key]}</a>  
+          
+          <!--
+EOT;
+}
+print <<<EOT
+--></div> 
+
+</div>
+
+
+     <div class="d-box">
+      <div class="d-bottom-l fl">周边城市</div>
+      <div class="d-bottom-r fr">
+    
+   <!--
+EOT;
+foreach($sortdb AS $key=>$rs){
+$url=get_info_url('',$key,$city_id);
+if($rs[domain]==""){
+   $url="/".$rs[dirname]."/";
+}else{
+   $url=$rs[domain]."/";
+}
+print <<<EOT
+-->   <a href="{$url}{$fidDB[dir_name ]}/" target="_blank"  title="{$rs[name]}{$fidDB[name]}兼职" >{$rs[name]}{$fidDB[name]}</a>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+
+ </div>
+    </div>
+    
+
+    
+     
+
+
+</div>
+
+
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+  
+  $('.libg').mousemove(function(){
+  $(this).addClass("libgon");
+  });
+  
+  $('.libg').mouseleave(function(){
+   $(this).removeClass("libgon");
+  });
+  
+ 
+  
+});
+
+</script>
+<!--
+EOT;
+?>
+-->

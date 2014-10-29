@@ -1,0 +1,53 @@
+<!--
+<?php
+print <<<EOT
+-->
+
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <tr  class="head">
+    <td colspan="2">高级规则助手（适合精准采集和采集字段较多的高级规则编写）</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td width="48%"><p style="line-height:150%;"> 1、本模块程序思路及功能说明：<br />
+        $Aarray[Mdesc] 
+        2、更新日期及更新日志：<br />
+        更新日期：<font color="red">$Aarray[update_date]</font> &nbsp; 详细更新日志请访问： <a href="$Aarray[update_url]" target="_blank"><b>本模块更新日志</b></a> <br />
+        3、右侧为采集内容页格式化后html代码。编写规则时,将要采集的内容用字段通配符替换,不需要的内容用{*}替换即可。<font color="red">注意：一般来说通配符前或后面的代码至少保证一处有唯一性</font> <br />
+        4、以下为该模块常用采集通配符：<br />
+        $Aarray[Mfileds] </p></td>
+    <td><p>
+        <input type="button" name="Submit" value="复制" onclick="JM_cc('sqlcode')">
+        <font color="blue">（点击即可复制以下代码。建议将代码复制到Dreamweaver或其他网页编辑器中进行规则编写。）</font> </p>
+      <textarea name="sqlcode" cols="120" rows="40" id="sqlcode">$show_content</textarea>
+      <p>
+        <input type="button" name="Submit" value="复制" onclick="JM_cc('sqlcode')">
+        <font color="blue">（点击即可复制以上代码。建议将代码复制到Dreamweaver或其他网页编辑器中进行规则编写。）</font> </p></td>
+  </tr>
+</table>
+<script language="javascript">
+ <!--
+ function JM_cc(ob){
+	var obj=document.getElementById(ob); if (obj) { 
+		obj.select();js=obj.createTextRange();js.execCommand("Copy");
+		alert('复制成功,建议将代码复制到Dreamweaver中进行规则编写');
+	}
+}
+function CopyText(obj) {
+	ie = (document.all)? true:false
+	if (ie){
+		var rng = document.body.createTextRange();
+		rng.moveToElementText(obj);
+		rng.scrollIntoView();
+		rng.select();
+		rng.execCommand("Copy");
+		rng.collapse(false);
+		alert(obj.innerText+'被复制成功');
+	}
+}
+
+ //-->
+</script>
+<!--
+EOT;
+?>
+-->

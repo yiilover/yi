@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+<?php
+if($webdb[SystemType]&&!function_exists('get_info_url')){
+@include(ROOT_PATH."$webdb[SystemType]/global.php");
+}
+if($webdb[SystemType]){
+$webdb[Info_guide_word]=$webdb[guide_word];
+}
+$GuideFid[$fid]=str_replace("<a href='$webdb[www_url]' class='guide_menu'>&gt;首页</a>","",$GuideFid[$fid]);
+$bodyondblclick = (function_exists('label_array')&&$web_admin&&!$MakeIndex) ?"dblclick_label();":"";
+print <<<EOT
+-->
+<head>
+<title>$titleDB[title]</title>
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/$STYLE/default.css">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="keywords" content="$titleDB[keywords]">
+<meta name="description" content="$titleDB[description]"> 
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/baixing/public.css">
+</head>
+<body>
+
+<!--
+<?php
+print <<<EOT
+--> 
+
+<div id="bx-head">
+
+ <div  class="bx-head">
+ 
+ <div class="bxhead-l"><!--EOT;
+$i=0;
+foreach($city_DB[name] AS $key2=>$value2){
+if(!$key2||++$i>7)break;
+print <<<EOT
+-->
+            <a href="{$city_DB[url][$key2]}">$value2</a> 
+            <!--
+EOT;
+}
+print <<<EOT
+--> [<a href="/allcity.php" title="切换城市">切换城市</a>]</div>
+ 
+ 
+<!--
+EOT;
+if($lfjid){print <<<EOT
+-->   <div  class="bxhead-r">
+        欢迎回来:$lfjid
+        <a href="$city_url/member/index.php"  rel="nofollow">会员中心</a>
+      	<a href="/do/login.php?action=quit"  rel="nofollow">退出</a>
+        </div>
+<!--
+EOT;
+}else{print <<<EOT
+-->  <div  class="bxhead-r">
+<div class="bxhead-r-r">
+        <a href="#">手机版</a>
+        </div>
+        <div class="bxhead-r-l">
+        <a href="/do/reg.php"  rel="nofollow" >注册</a>  | <a href="/do/login.php"  rel="nofollow" >登录</a> <span>|</span> <a href="/member/"  rel="nofollow" >修改/删除信息</a> <span>|</span> </div>
+        
+        </div>
+<!--
+EOT;
+}print <<<EOT
+-->
+</div>
+
+</div>
+
+<!--
+EOT;
+?>
+-->
+
+
+
+

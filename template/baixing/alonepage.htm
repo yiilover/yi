@@ -1,0 +1,53 @@
+<!--
+<?php
+print <<<EOT
+-->
+<link rel="stylesheet" type="text/css" href="/images/$STYLE/qita.css" />
+<link rel="stylesheet" type="text/css" href="/images/$STYLE/list.css" />
+
+<div id="bx-head-box">
+  <div class="bx-head-box">
+    <div class="head-box-l">
+      <ul>
+      <li></li>
+      <li><a href="$city_url"><img src="/images/$STYLE/logo.png"  alt="{$city_DB[name][$city_id]}" title="{$city_DB[name][$city_id]}"  /></a></li>
+      
+       <li>><a href="javascript:vido();">帮助中心</a></li></ul>
+    </div>
+    <div class="head-box-m">
+     
+    </div>
+    <div class="head-box-r">
+      <div class="head-box-r-r">  </div> 
+    <div class="head-box-r-m"><a href="/post.php?fid=$fid&city_id=$city_id" title="免费发布{$fidDB[name]}信息" target="_blank" >免费发布{$fidDB[name]}信息</a></div>
+    <div class="head-box-r-l"> </div>
+    
+    </div>
+  </div>
+</div>
+<div class="w980"> 
+  
+
+
+
+<div class="w980">
+
+<!--
+EOT;
+if($rsdb[title]){print <<<EOT
+-->
+           <div style="font-size:18px; line-height:50px; border-bottom:1px solid #ccc; height:50px;"><strong>$rsdb[title]</strong></div>
+<!--
+EOT;
+}print <<<EOT
+-->
+          <div class="cle" style=" padding:20px 0px; font-size:14px; line-height:25px;">
+           $rsdb[content]
+           </div>
+             
+</div>
+</div>  
+<!--
+EOT;
+?>
+-->

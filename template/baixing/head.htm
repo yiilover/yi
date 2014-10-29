@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<?php
+unset($sortdb,$fup);
+$fup = $city_DB[fup][$city_id];
+$query = $db->query("SELECT * FROM {$_pre}city WHERE fup='$fup' ORDER BY list DESC");
+while($rs = $db->fetch_array($query)){
+  $sortdb[]=$rs;
+  }
+print <<<EOT
+<head>
+<title>$titleDB[title]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="keywords" content="$titleDB[keywords]">
+<meta name="description" content="$titleDB[description]"> 
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/$STYLE/public.css">
+<script  type="text/javascript" src="$webdb[www_url]/images/default/inc.js"></script>
+</head>
+<body>
+<div id="bx-head">
+ <div  class="bx-head">
+ <div class="bxhead-l">
+   <ul>
+   <li class="waicong_com_tel">触屏版<small>&nbsp;|&nbsp;</small></li>
+    <li> 
+
+  <!--
+EOT;
+if(count($city_DB[name])>1){
+print <<<EOT
+-->
+
+<!--
+EOT;
+$i=0;
+foreach($sortdb AS $key=>$rs){
+if(++$i>10)break;
+if($rs[domain]==""){
+   $url="/".$rs[dirname]."/";
+}else{
+   $url=$rs[domain];
+}
+print <<<EOT
+-->   <a href="$url" title="{$rs[name]}" >{$rs[name]}</a>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+
+<a href="$webdb[www_url]/allcity.php?&f=top&cityurl=$webdb[www_url]?=.html" class="h">[更多城市]</a>
+<!--
+EOT;
+}print <<<EOT
+-->
+</li>
+</ul>
+</div>
+<!--
+EOT;
+if($lfjid){print <<<EOT
+-->   <div  class="bxhead-r">
+        欢迎回来：$lfjid
+        <a href="/member/index.php?&f=top&cityurl=$webdb[www_url]?=.html"  rel="nofollow">会员中心</a>
+      	<a href="/do/login.php?action=quit"  rel="nofollow">退出</a>
+        </div>
+        
+         <!--
+EOT;
+}elseif( $nickName=get_cookie('QQ_nickName') ){print <<<EOT
+-->   <div  class="bxhead-r">
+      欢迎您:<a style="color:#FF0000;">$nickName</a>
+	   <a href="$webdb[www_url]/do/reg.php?step=1" rel="nofollow">注册并绑定帐号</a> 
+      <a href="$webdb[www_url]/do/qq_bind.php?step=1" rel="nofollow">绑定已有帐号 </a>
+      <a href="$webdb[www_url]/do/qq_login.php?action=quit" rel="nofollow">退出</a>
+	  </div>
+        
+<!--
+EOT;
+}else{print <<<EOT
+-->  <div  class="bxhead-r">
+<div class="bxhead-r-r">
+         <a href="/member/index.php?&f=top&cityurl=$webdb[www_url]?=.html"  rel="nofollow" >修改/删除信息</a>
+        </div>
+        <div class="bxhead-r-l">
+        <a href="$webdb[www_url]/do/reg.php?&f=top&cityurl=$webdb[www_url]?=.html"  rel="nofollow" >注册</a><span>|</span><a href="$webdb[www_url]/do/login.php?&f=top&cityurl=$webdb[www_url]?=.html"  rel="nofollow" >登录</a><span>|</span></div>
+        </div><!--
+EOT;
+}print <<<EOT
+-->
+</div>
+</div>
+
+
+<!--
+EOT;
+?>
+-->

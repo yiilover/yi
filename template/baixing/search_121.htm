@@ -1,0 +1,140 @@
+<!--
+<?php
+$listdb || $style_list="none;";
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/$STYLE/list.css" />
+<script src="$webdb[www_url]/images/$STYLE/jquery.js" type="text/javascript"></script>
+<div id="bx-head-box">
+  <div class="bx-head-box">
+    <div class="head-box-l">
+       <ul>
+      <li>
+      <a href="$city_url"><img src="$webdb[www_url]/images/$STYLE/logo.png"  alt="{$city_DB[name][$city_id]}" title="{$city_DB[name][$city_id]}"  /></a></li>
+      <li class="waicong_com_cityname"><a href="$city_url" title="{$city_DB[name][$city_id]}" >{$city_DB[name][$city_id]}</a> </li>
+      </ul>
+    </div>
+    <div class="head-box-m">
+     
+    </div>
+    <div class="head-box-r">
+      <div class="head-box-r-r">  </div> 
+    <div class="head-box-r-m"><a href="/post.php?fid=$fid&city_id=$city_id" title="免费发布{$fidDB[name]}信息" target="_blank" >免费发布{$fidDB[name]}信息</a></div>
+    <div class="head-box-r-l"> </div>
+    
+    </div>
+  </div>
+</div>
+<div class="w980"> 
+<div  class="bx-list">
+  
+  <div class="bx-list-r fr" style="width:100%;">
+
+     
+     <div class="r-post mt10">
+     
+      <a href="/post.php"> 以下是搜索<h2>$keyword</h2>的相关信息</a>
+     
+     </div>
+     
+     <div class="list-li mt10">
+     <ul>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$rs[url]=get_info_url($rs[id],$rs[fid],$rs[city_id]);
+$rs[Lurl]=get_info_url('',$rs[fid],$rs[city_id]);
+$rs[content]=get_word($rs[content],50);
+print <<<EOT
+-->
+              <li class="libg">
+                <div class="li-l fl">
+             
+                             <!--
+EOT;
+if($rs[picurl]){
+print <<<EOT
+-->
+    
+                <a href="$rs[url]" target="_blank"><img src="$webdb[www_url]/upload_files/$rs[picurl]"  width="64" height="64" border="0">
+                
+   <!--
+EOT;
+}print <<<EOT
+-->              
+                
+                <!--
+EOT;
+if($rs[picurl]==""){
+print <<<EOT
+-->
+              <img src="$webdb[www_url]/images/$STYLE/nopic.gif"  width="64" height="64" border="0">
+              <!--
+EOT;
+}print <<<EOT
+-->
+                
+                
+                </a>
+                </div>
+                <div class="li-m fl">
+                  <a href="$rs[url]" target="_blank" class="fb14">$rs[title]</a> <a href="$rs[Lurl]" class="fbb">$rs[fname]</a><br/>
+                    <span class="fb14s f12">{$city_DB[name][$city_id]} {$zone_DB[name][$rs[zone_id]]} <span  class="f12">  $rs[content]</span></span>
+                  <br/><span class="fb14f f12">{$rs[cwypjg]}元  &nbsp;&nbsp; <!----></span>
+                 
+                </div>
+                <div class="li-r fr">
+                $rs[posttime]
+                </div>
+                </li>
+				
+              <!--
+EOT;
+}
+print <<<EOT
+-->
+           
+<!--
+EOT;
+if($action=="search"&&!$listdb){
+print <<<EOT
+-->
+<div id="searchNO">
+很抱歉,没有找到你要查询的内容!!
+</div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+	
+		</ul>
+        
+        	<div class="page mt10">$showpage</div>  
+     
+     </div>
+  </div>
+</div>
+
+
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+  
+  $('.libg').mousemove(function(){
+  $(this).addClass("libgon");
+  });
+  
+  $('.libg').mouseleave(function(){
+   $(this).removeClass("libgon");
+  });
+  
+ 
+  
+});
+
+</script>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,133 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/$STYLE/all_city.css" />
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/$STYLE/public.css">
+<div id="bx-head-box">
+  <div class="bx-head-box">
+    <div class="head-box-l">
+      <ul>
+      <li></li>
+      <li><a href="$city_url"><img src="$webdb[www_url]/images/$STYLE/logo.png"  alt="{$city_DB[name][$city_id]}" title="{$city_DB[name][$city_id]}"  /></a></li>
+
+       <li>> <a href="javascript:vido();">所有城市</a></li></ul>
+    </div>
+    <div class="head-box-m">
+     
+    </div>
+   <div class="head-box-r"><a href="#chosecity"  title="免费发布信息"  >免费发布信息</a></div>
+  </div>
+</div>
+
+<div  class="w980 all-city">
+
+
+<div class="cf16" id="chosecity">选择您所在的城市：</div>
+<div class="hot-city"><strong>热门城市:</strong>&nbsp;<!--
+EOT;
+$i=0;
+foreach($city_DB[name] AS $key2=>$value2){
+if(!$key2||++$i>7)break;
+print <<<EOT
+-->
+            <a href="{$city_DB[url][$key2]}">$value2</a> 
+            <!--
+EOT;
+}
+print <<<EOT
+--></div>
+    <div class="all-city">
+<!--
+EOT;
+if($webdb[Info_allcityType]==1){
+print <<<EOT
+-->
+      <!--
+EOT;
+}else{
+print <<<EOT
+-->
+<!--
+EOT;
+foreach($area_DB[name] AS $key=>$value){
+print <<<EOT
+-->
+    <div class="zxs$key">
+      
+       <div class="all-city-l  ">$value</div>
+        <div class="all-city-r">
+            <!--
+EOT;
+foreach($city_DB[$key] AS $key2=>$value2){
+$color=$city_DB[hits][$key2]?'color:red;':'';
+print <<<EOT
+-->
+            <a href="{$city_DB[url][$key2]}" style="$color">$value2</a>
+            <!--
+EOT;
+}
+print <<<EOT
+-->     </div>
+         </div>
+      <!--
+EOT;
+}
+print <<<EOT
+-->
+      <!--
+EOT;
+}
+print <<<EOT
+-->
+    </div>
+    
+
+   
+     
+    
+      <div class="d-bottom mt10">
+    
+    <div class="d-box">
+  <div class="d-bottom-l fl">友情链接</div>
+  <div class="d-bottom-r fr"><!--
+EOT;
+if(count($friendlinkDB[1])&&count($friendlink_DB[$city_id][1])) $array = $friendlinkDB[1]+$friendlink_DB[$city_id][1];
+elseif(count($friendlinkDB[1])) $array = $friendlinkDB[1];
+else $array = $friendlink_DB[$city_id][1];
+foreach($array AS $rs){
+print <<<EOT
+-->
+              <a href="$rs[url]" target="_blank" title="$rs[descrip]">$rs[name]</a> 
+              <!--
+EOT;
+}
+print <<<EOT
+-->
+            
+              <!--
+EOT;
+if(count($friendlinkDB[0])&&count($friendlink_DB[$city_id][0])) $array = $friendlinkDB[0]+$friendlink_DB[$city_id][0];
+elseif(count($friendlinkDB[0])) $array = $friendlinkDB[0];
+else $array = $friendlink_DB[$city_id][0];
+foreach($array AS $rs){print <<<EOT
+-->
+              <a href="$rs[url]" target="_blank" title="$rs[descrip]">$rs[name]</a>&nbsp; 
+              <!--
+EOT;
+}
+print <<<EOT
+--></div> 
+
+
+
+</div>
+    
+    
+    
+</div>
+</div>
+<!--
+EOT;
+?>
+-->

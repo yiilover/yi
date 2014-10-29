@@ -1,0 +1,42 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width='100%' cellspacing='1' cellpadding='3' class='tablewidth'>
+  <tr class="head"> 
+    <td colspan="3"> 
+      <div align='center'>数据库备份完毕,以下文件占用服务器空间为:<b><font color='#FF0000'>{$rsdb[totalsize]} 
+        兆(M)</font></b></div>
+    </td>
+  </tr>
+  <tr bgcolor='#FFFFFF'> 
+    <td colspan="3">备份完毕,现在你可以点击下载，右键点击另存。<br>
+      </td>
+  </tr>
+  <!--
+EOT;
+//for($j=1;$j<=$rsdb[sqlnum];$j++){
+foreach($rsdb[sqlsize] AS $key=>$size){
+print <<<EOT
+-->
+  <tr bgcolor='#FFFFFF'> 
+    <td width="3%" align="center">$key</td>
+    <td width="48%"> 
+      <input type="checkbox" name="checkbox" value="checkbox">
+      <a href="../cache/mysql_bak/$rand_dir/$key.sql" target="_blank">$key.sql</a> 
+    </td>
+    <td width="49%">{$size} (K)</td>
+  </tr>
+  <!--
+EOT;
+}
+print <<<EOT
+-->
+  <tr bgcolor='#FFFFFF'> 
+    <td colspan="3" align="center">以上数据库文件总共占用空间:<b><font color='#FF0000'>{$rsdb[totalsize]}兆(M)</font></b></td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

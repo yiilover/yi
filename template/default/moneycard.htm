@@ -1,0 +1,71 @@
+<!--
+<?php
+print <<<EOT
+-->
+<style>
+.w { width:960px; margin:40px auto; line-height:25px;}
+.text2 { border:1px solid #ccc; padding:3px 0px; color:#F00; font-size:16px; font-family: Arial, Helvetica, sans-serif;}
+.submit2 {color:#FFF;
+	/*background:url(bt_bg.gif);*/background:#6FB301; 
+	height:25px; padding:0px 15px; line-height:25px; font-weight:bold;
+	border:none;
+	letter-spacing:2px;}
+.TAG { padding:15px 0px; font-size:16px; font-weight:bold;}	
+.middle td { padding:10px 0px; font-size:16px;}
+</style>
+<div class="w">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" class="MainTable">
+ <tr>
+ 
+ </tr>
+  <tr> 
+    <td valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" class="dragTable" style="display:$hide_listpic">
+        <form name="form1" method="post" action="?action=get">
+          <tr> 
+            <td class="head"> 
+              <h3 class="L"></h3>
+              <span class="TAG">欢迎使用$webdb[webname]在线充值系统</span> 
+              <h3 class="R"></h3>
+            </td>
+          </tr>
+          <tr> 
+            <td class="middle" align="left">
+            <table width="100%" border="0" cellspacing="2" cellpadding="2">
+                <tr>
+                  <td  ><b><font color="#0000FF">支付方式:</font></b> <!--[<a href="?paytype=yeepay">易宝支付</a>]--> 
+                    [<a href="/do/buymoneycard.php?paytype=tenpay">财付通</a>] [<a href="/do/buymoneycard.php?paytype=alipay">支付宝</a>] 
+                    [<a href="/do/moneycard.php">充值卡充值</a>]</td>
+                </tr>
+              </table>
+            
+            <img src="$webdb[www_url]/images/default/card_logo.gif">
+            </td>
+          </tr>
+          <tr>
+            <td class="middle" align="left"><br/>你当前具有{$webdb[MoneyName]}：<img src="$webdb[www_url]/images/default/moneycard.gif"><b><font color="#FF0000"> 
+              {$lfjdb[money]}</font></b>{$webdb[MoneyDW]}</td>
+          </tr>
+          <tr> 
+            <td class="middle" align="left"><br/>请输入充值卡密码：
+              <input type="text" name="atc_passwd" size="16" class="text2">
+              <input type="submit" name="Submit" class="submit2" value="提交">
+            </td>
+          </tr>
+          <tr> 
+            <td class="foot"> 
+              <h3 class="L"></h3>
+              <h3 class="R"></h3>
+            </td>
+          </tr>
+        </form>
+      </table>
+      
+    </td>
+  </tr>
+</table></div>
+<div style=" clear:both; padding-bottom:50px;"></div>
+<!--
+EOT;
+?>
+-->

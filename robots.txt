@@ -1,0 +1,14 @@
+User-agent: *
+Disallow: /a_d/
+Disallow: /admin/
+Disallow: /cache/
+Disallow: /data/
+Disallow: /do/
+Disallow: /ewebeditor/
+Disallow: /f/
+Disallow: /hack/
+Disallow: /home/
+Disallow: /images/
+Disallow: /inc/
+Disallow: /member/
+Disallow: /template/
