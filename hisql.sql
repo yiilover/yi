@@ -1,1 +1,0 @@
-alter table qb_ad_norm_place add `city_id` mediumint(7) NOT NULL DEFAULT '0';
